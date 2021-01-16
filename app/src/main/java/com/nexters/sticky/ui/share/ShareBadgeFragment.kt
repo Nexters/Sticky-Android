@@ -13,22 +13,7 @@ class ShareBadgeFragment : BaseFragment<FragmentShareBadgeBinding>() {
 	override val viewModel: ShareViewModel by viewModels()
 	override val layoutResId = R.layout.fragment_share_badge
 
-	private lateinit var inflater: LayoutInflater
-	private var container: ViewGroup? = null
-
 	override fun setUpBinding(){
 		binding.vm = viewModel
 	}
-
-	override fun onCreateView(
-		inflater: LayoutInflater,
-		container: ViewGroup?,
-		savedInstanceState: Bundle?
-	): View? {
-		this.inflater = inflater
-		this.container = container
-
-		return binding.root
-	}
-
 }

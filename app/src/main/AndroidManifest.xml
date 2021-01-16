@@ -10,8 +10,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.Sticky">
-        <activity android:name=".ui.main.MainActivity"></activity>
-        <activity android:name=".ui.share.ShareActivity">
+        <activity android:name=".ui.share.ShareActivity"></activity>
+        <activity android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
