@@ -23,7 +23,9 @@ class ShareActivity : BaseActivity<ActivityShareBinding>() {
 		super.onCreate(savedInstanceState)
 
 		binding.shareViewPager.adapter =  ShareFragmentAdapter(this)
-
+		setMediator()
+	}
+	fun setMediator(){
 		val tabLayoutTextArray = arrayOf("현재 기록","누적 기록", "최근 뱃지")
 
 		TabLayoutMediator(binding.shareTabLayout, binding.shareViewPager){tab,position ->
