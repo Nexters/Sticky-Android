@@ -32,21 +32,24 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
 	private fun setActionBar() {
 		actionBar.clickListener(R.id.btn_my_page) {
-			toast("left button")
+			toast("go to my page")
 		}
 
 		actionBar.clickListener(R.id.btn_close_button) {
-			toast("right button")
+			toast("stop challenge")
 		}
 
-		actionBar.setText(R.id.tv_title, "title")
+		actionBar.setVisibility(R.id.img_heart)
+		actionBar.setText(R.id.tv_title, "3")
+
+//		actionBar.setText(R.id.tv_title, "외출중입니다")
 	}
 
 	private fun setOnClickListener() {
-//		binding.btnShare.setOnClickListener {
-//			val intent = Intent(this@MainActivity, ShareActivity::class.java)
-//			startActivity(intent)
-//		}
+		binding.btnShare.setOnClickListener {
+			val intent = Intent(this@MainActivity, ShareActivity::class.java)
+			startActivity(intent)
+		}
 	}
 
 	private fun setTimeText() {
