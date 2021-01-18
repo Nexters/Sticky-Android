@@ -29,46 +29,72 @@
         <com.google.android.material.tabs.TabLayout
                 android:id="@+id/share_tabLayout"
                 android:layout_width="0dp"
-                android:layout_height="63dp"
+                android:layout_height="20dp"
+                app:tabIndicatorColor="#00FFFFFF"
+                app:tabTextColor="#7Affffff"
+                app:tabSelectedTextColor="#ffffff"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/back_btn"
-                android:layout_marginTop="30dp">
+                android:layout_marginEnd="70dp"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="30dp"/>
 
-        <com.google.android.material.tabs.TabItem
-                android:id="@+id/tabItem1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="현재 기록"
-                />
-
-        <com.google.android.material.tabs.TabItem
-                android:id="@+id/tabItem2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="누적 기록" />
-
-        <com.google.android.material.tabs.TabItem
-                android:id="@+id/tabItem3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="최근 뱃지" />
-
-        </com.google.android.material.tabs.TabLayout>
         <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/share_viewPager"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/instagram_share_btn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/share_tabLayout"
                 android:layout_marginStart="60dp"
                 android:layout_marginEnd="60dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginBottom="75dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginBottom="36dp"
                 android:background="#ffffff"
                 />
+        <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/instagram_share_btn"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/share_viewPager"
+                android:layout_marginBottom="40dp"
+                android:src="@drawable/icon_share"
+                android:background="#A395FF"
+            />
+        <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/share_btn"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/instagram_share_btn"
+                app:layout_constraintTop_toBottomOf="@id/share_viewPager"
+                android:layout_marginEnd="60dp"
+                android:layout_marginBottom="40dp"
+                android:layout_marginTop="36dp"
+                android:background="#A395FF"
+
+                android:src="@drawable/icon_share"
+                />
+        <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/twitter_share_btn"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/instagram_share_btn"
+                app:layout_constraintTop_toBottomOf="@id/share_viewPager"
+                android:layout_marginStart="60dp"
+                android:background="#A395FF"
+                android:layout_marginEnd="60dp"
+                android:layout_marginBottom="40dp"
+                android:layout_marginTop="36dp"
+                android:src="@drawable/icon_share"
+                />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
