@@ -1,10 +1,12 @@
 package com.nexters.sticky.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.nexters.sticky.R
 import com.nexters.sticky.base.BaseActivity
 import com.nexters.sticky.databinding.ActivityMainBinding
+import com.nexters.sticky.ui.share.ShareActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,6 +26,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
 		setActionBar()
 		viewModel.setText("activity_main.xml")
+
+		setOnClickListener()
 	}
 
 	private fun setActionBar() {
@@ -36,5 +40,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 		}
 
 		actionBar.setText(R.id.tv_title, "title")
+	}
+
+	private fun setOnClickListener() {
+		binding.btnShare.setOnClickListener {
+			val intent = Intent(this@MainActivity, ShareActivity::class.java)
+			startActivity(intent)
+		}
 	}
 }
