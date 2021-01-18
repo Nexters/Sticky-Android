@@ -15,25 +15,114 @@
             android:layout_height="match_parent">
 
         <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_day"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{vm.text}"
-                android:textSize="30sp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="20dp"
+                android:text="@{vm.day}"
+                android:textAlignment="center"
+                android:textSize="28sp"
+                app:layout_constraintBottom_toTopOf="@id/tv_divisor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="텍스트" />
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:text="0일" />
 
-        <Button
+        <TextView
+                android:id="@+id/tv_hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{vm.hour}"
+                android:textSize="80sp"
+                app:layout_constraintBottom_toTopOf="@id/tv_second"
+                app:layout_constraintEnd_toStartOf="@id/tv_divisor"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_day"
+                tools:text="00" />
+
+        <TextView
+                android:id="@+id/tv_divisor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:text=":"
+                android:textSize="40sp"
+                app:layout_constraintBottom_toTopOf="@id/tv_second"
+                app:layout_constraintEnd_toStartOf="@id/tv_minute"
+                app:layout_constraintStart_toEndOf="@id/tv_hour"
+                app:layout_constraintTop_toBottomOf="@id/tv_day" />
+
+        <TextView
+                android:id="@+id/tv_minute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{vm.minute}"
+                android:textSize="80sp"
+                app:layout_constraintBottom_toTopOf="@id/tv_second"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_divisor"
+                app:layout_constraintTop_toBottomOf="@id/tv_day"
+                tools:text="00" />
+
+        <TextView
+                android:id="@+id/tv_second"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@{vm.second}"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toTopOf="@id/btn_start_challenge"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_divisor"
+                tools:text="00" />
+
+        <ImageView
+                android:id="@+id/btn_start_challenge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:src="@drawable/ic_launcher_foreground"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@id/recycler_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:src="@drawable/ic_launcher_foreground" />
+
+        <ImageView
+                android:id="@+id/btn_pause_challenge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:src="@drawable/ic_launcher_background"
+                app:layout_constraintBottom_toTopOf="@id/recycler_view"
+                app:layout_constraintEnd_toStartOf="@id/btn_share"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:src="@drawable/ic_launcher_background" />
+
+        <ImageView
                 android:id="@+id/btn_share"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="공유"
+                android:layout_marginBottom="40dp"
+                android:src="@drawable/ic_launcher_background"
+                app:layout_constraintBottom_toTopOf="@id/recycler_view"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_name" />
+                app:layout_constraintStart_toEndOf="@id/btn_pause_challenge"
+                tools:src="@drawable/ic_launcher_background" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="74dp"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

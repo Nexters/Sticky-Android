@@ -25,9 +25,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 		super.onCreate(savedInstanceState)
 
 		setActionBar()
-		viewModel.setText("activity_main.xml")
-
 		setOnClickListener()
+
+		setTimeText()
 	}
 
 	private fun setActionBar() {
@@ -43,9 +43,18 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 	}
 
 	private fun setOnClickListener() {
-		binding.btnShare.setOnClickListener {
-			val intent = Intent(this@MainActivity, ShareActivity::class.java)
-			startActivity(intent)
+//		binding.btnShare.setOnClickListener {
+//			val intent = Intent(this@MainActivity, ShareActivity::class.java)
+//			startActivity(intent)
+//		}
+	}
+
+	private fun setTimeText() {
+		with(viewModel) {
+			setTextDay("11")
+			setTextHour("12")
+			setTextMinute("50")
+			setTextSecond("44")
 		}
 	}
 }
