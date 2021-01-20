@@ -109,5 +109,4 @@ class ShareActivity : BaseActivity<ActivityShareBinding>() {
 			startActivity(intent)
 		}
 	}
-
 }
