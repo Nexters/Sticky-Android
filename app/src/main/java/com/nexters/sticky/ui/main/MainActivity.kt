@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import com.nexters.sticky.R
 import com.nexters.sticky.base.BaseActivity
 import com.nexters.sticky.databinding.ActivityMainBinding
+import com.nexters.sticky.ui.dialog.ExitChallengeDialog
 import com.nexters.sticky.ui.share.ShareActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -36,7 +37,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 		}
 
 		actionBar.clickListener(R.id.btn_close_button) {
-			toast("right button")
+			ExitChallengeDialog().show(supportFragmentManager, "")
 		}
 
 		actionBar.setText(R.id.tv_title, "title")
