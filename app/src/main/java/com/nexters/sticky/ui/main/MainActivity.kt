@@ -3,9 +3,12 @@ package com.nexters.sticky.ui.main
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.nexters.sticky.R
 import com.nexters.sticky.base.BaseActivity
 import com.nexters.sticky.databinding.ActivityMainBinding
+import com.nexters.sticky.ui.main.adapter.MainAdapter
+import com.nexters.sticky.ui.main.adapter.MainItemDecorator
 import com.nexters.sticky.ui.share.ShareActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,8 +29,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
 		setActionBar()
 		setOnClickListener()
-
 		setTimeText()
+
+		setRecyclerView()
 	}
 
 	private fun setActionBar() {
@@ -58,6 +62,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 			setTextHour("12")
 			setTextMinute("50")
 			setTextSecond("44")
+		}
+	}
+
+	private fun setRecyclerView() {
+		binding.recyclerView.apply {
+			adapter = MainAdapter()
+			layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+			addItemDecoration(MainItemDecorator())
 		}
 	}
 }
