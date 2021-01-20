@@ -48,6 +48,7 @@ class ShareActivity : BaseActivity<ActivityShareBinding>() {
 			toast("right button")
 		}
 	}
+
 	fun setMediator() {
 		val tabLayoutTextArray = arrayOf("현재 기록", "누적 기록", "최근 뱃지")
 
@@ -78,7 +79,7 @@ class ShareActivity : BaseActivity<ActivityShareBinding>() {
 		return Uri.parse(path)
 	}
 
-	private fun setShareImage(){
+	private fun setShareImage() {
 		val bmp = BitmapFactory.decodeResource(resources, R.drawable.abc)
 		val uri: Uri? = getImageUri(this, bmp)
 		val intent = Intent(android.content.Intent.ACTION_SEND)
@@ -89,7 +90,7 @@ class ShareActivity : BaseActivity<ActivityShareBinding>() {
 		startActivity(shareIntent)
 	}
 
-	private fun instagramShare(){
+	private fun instagramShare() {
 		val launchIntent = packageManager.getLaunchIntentForPackage("com.instagram.android")
 
 		if (launchIntent == null) { // 단말기 내에 어플리케이션(앱)이 설치되어 있지 않음.
@@ -105,7 +106,6 @@ class ShareActivity : BaseActivity<ActivityShareBinding>() {
 			intent.type = "image/*"
 			intent.putExtra(Intent.EXTRA_STREAM, backgroundAssetUri)
 			intent.setPackage("com.instagram.android")
-
 			startActivity(intent)
 		}
 	}
