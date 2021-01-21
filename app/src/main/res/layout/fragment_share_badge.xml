@@ -26,18 +26,18 @@
                         android:id="@+id/badge_level_txt1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="LV.30"
-                        android:textColor="#654eff"
+                        android:textColor="@color/brand_color"
                         android:textSize="16sp"
                         android:textStyle="bold"
+                        android:text="LV.30"
                         />
                 <TextView
                         android:id="@+id/badge_level_txt2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="  이불 밖은 위험해"
-                        android:textColor="#654eff"
+                        android:textColor="@color/brand_color"
                         android:textSize="16sp"
+                        android:text="  이불 밖은 위험해"
                         />
             </LinearLayout>
 
@@ -45,30 +45,30 @@
                     android:id="@+id/badge_txt1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="집에서"
-                    android:textColor="#000000"
+                    android:textColor="@color/black"
                     android:textSize="32sp"
                     android:layout_marginTop="20dp"
                     android:layout_marginStart="20dp"
+                    android:text="집에서"
                     />
             <TextView
                     android:id="@+id/badge_time_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="10일 \n23시간 34분"
-                    android:textColor="#000000"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
                     android:textSize="32sp"
                     android:layout_marginStart="20dp"
+                    android:text="10일 \n23시간 34분"
                     />
             <TextView
                     android:id="@+id/badge_txt2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="동안 \n안나갔다. "
-                    android:textColor="#000000"
+                    android:textColor="@color/black"
                     android:textSize="32sp"
                     android:layout_marginStart="20dp"
+                    android:text="동안 \n안나갔다. "
                     />
             <ImageView
                     android:layout_width="60dp"

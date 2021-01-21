@@ -39,8 +39,7 @@ class ShareActivity : BaseActivity<ActivityShareBinding>() {
 
 	private fun setActionBar() {
 		actionBar.clickListener(R.id.back_main_btn) {
-			val intent = Intent(this, MainActivity::class.java)
-			startActivity(intent)
+			onBackPressed()
 		}
 
 		actionBar.clickListener(R.id.image_save_btn) {

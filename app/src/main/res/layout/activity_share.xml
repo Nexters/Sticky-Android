@@ -11,13 +11,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#654EFF">
+            android:background="@color/brand_color">
 
         <com.google.android.material.tabs.TabLayout
                 android:id="@+id/share_tabLayout"
                 android:layout_width="0dp"
                 android:layout_height="20dp"
-                app:tabIndicatorColor="#00FFFFFF"
+                app:tabIndicatorColor="@color/brand_color"
                 app:tabTextAppearance="@style/tab_text"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -37,12 +37,14 @@
                 android:layout_marginStart="60dp"
                 android:layout_marginEnd="60dp"
                 android:layout_marginTop="36dp"
-                android:layout_marginBottom="20dp">
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/share_fragment_background"
+                >
         <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/share_viewPager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#ffffff"
+
                 />
         </LinearLayout>
         <LinearLayout
@@ -56,7 +58,7 @@
                 android:id="@+id/share_txt1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#ffffff"
+                android:textColor="@color/white"
                 android:textSize="16sp"
                 android:text="나의 "
                 />
@@ -64,7 +66,7 @@
                 android:id="@+id/share_content_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#ffffff"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 android:textSize="16sp"
                 android:layout_marginStart="0dp"
@@ -75,7 +77,7 @@
                 android:id="@+id/share_txt2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#ffffff"
+                android:textColor="@color/white"
                 android:textSize="16sp"
                 android:text="을 공유합니다"
                 />
@@ -91,7 +93,6 @@
                 android:layout_marginTop="36dp"
                 android:layout_marginBottom="40dp"
                 android:src="@drawable/image_instagram"
-                android:background="#00ffffff"
             />
         <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/share_btn"
@@ -103,7 +104,7 @@
                 android:layout_marginEnd="60dp"
                 android:layout_marginBottom="40dp"
                 android:layout_marginTop="36dp"
-                android:background="#A395FF"
+                android:background="@drawable/share_button_background_radius16"
                 android:src="@drawable/icon_share"
                 />
         <androidx.appcompat.widget.AppCompatImageButton
@@ -114,11 +115,11 @@
                 app:layout_constraintStart_toEndOf="@id/instagram_share_btn"
                 app:layout_constraintTop_toBottomOf="@+id/share_text_Linear"
                 android:layout_marginStart="60dp"
-                android:background="#A395FF"
                 android:layout_marginEnd="60dp"
                 android:layout_marginBottom="40dp"
                 android:layout_marginTop="36dp"
                 android:src="@drawable/icon_share"
+                android:background="@drawable/share_button_background_radius16"
                 />
 
 
