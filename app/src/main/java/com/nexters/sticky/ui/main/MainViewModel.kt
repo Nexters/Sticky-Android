@@ -3,7 +3,12 @@ package com.nexters.sticky.ui.main
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.nexters.sticky.data.repository.SampleRepository
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import java.util.concurrent.TimeUnit
 
 class MainViewModel @ViewModelInject constructor(private val sampleRepository: SampleRepository) : ViewModel() {
 	enum class CHALLENGE {
@@ -17,23 +22,48 @@ class MainViewModel @ViewModelInject constructor(private val sampleRepository: S
 	val minute = MutableLiveData("00")
 	val second = MutableLiveData("00")
 
+	private val format = "%02d"
+	private val formatDay = "%d일"
+	private val base60 = 60
+	private val base24 = 24
+	private val durationTimeMillis = 1L
+
 	fun setChallengeStatus(status: CHALLENGE) {
 		challengeStatus.value = status
 	}
 
-	fun setTextDay(value: String) {
-		day.value = value + "일"
+	private var job = Job()
+		get() {
+			if (field.isCancelled) field = Job()
+			return field
+		}
+
+	fun stopTimer() {
+		job.cancel()
+		resetTimerText()
 	}
 
-	fun setTextHour(value: String) {
-		hour.value = value
+	fun startTimer() {
+		resetTimerText()
+		viewModelScope.launch(job) {
+			val totalSeconds = TimeUnit.DAYS.toSeconds(2)
+			val tickSeconds = 1
+
+			for (seconds in tickSeconds..totalSeconds) {
+				second.value = String.format(format, TimeUnit.SECONDS.toSeconds(seconds) % base60)
+				minute.value = String.format(format, TimeUnit.SECONDS.toMinutes(seconds) % base60)
+				hour.value = String.format(format, TimeUnit.SECONDS.toHours(seconds) % base24)
+				day.value = String.format(formatDay, TimeUnit.SECONDS.toDays(seconds))
+
+				delay(durationTimeMillis)
+			}
+		}
 	}
 
-	fun setTextMinute(value: String) {
-		hour.value = value
-	}
-
-	fun setTextSecond(value: String) {
-		second.value = value
+	private fun resetTimerText() {
+		day.value = "0일"
+		hour.value = "00"
+		minute.value = "00"
+		second.value = "00"
 	}
 }
