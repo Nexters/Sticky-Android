@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="brand_color">#654eff</color>
+    <color name="stop_challenge_color">#888888</color>
+    <color name="can_not_start_tool_tip_color">#99000000</color>
 </resources>
