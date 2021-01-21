@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">sticky</string>
+
+    <!-- dialog -->
+    <string name="dialog_terminate_challenge_title">챌린지 종료</string>
+    <string name="dialog_terminate_challenge_description">챌린지가 00때문에 종료되었습니다.\n최종 기록을 공유할까요?</string>
+    <string name="dialog_exit_challenge_title">챌린지 종료하기</string>
+    <string name="dialog_exit_challenge_description">지금까지의 연속기록이 사라집니다! 정말 챌린지를 종료하실건가요?</string>
+    <string name="dialog_change_address_title">주소 변경하기</string>
+    <string name="dialog_change_address_description">주소를 변경하면 지금까지 쌓은 모든 기록이 사라집니다. 정말 주소를 변경하고 새로 시작하시겠어요?</string>
+    <string name="dialog_share">공유하기</string>
+    <string name="dialog_exit">종료하기</string>
+    <string name="dialog_cancel">취소하기</string>
+
 </resources>

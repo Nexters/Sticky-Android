@@ -1,18 +1,18 @@
 package com.nexters.sticky.base
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.ViewModel
 
 abstract class BaseDialog<T : ViewDataBinding> : DialogFragment() {
-	abstract val viewModel: ViewModel
-
 	protected val binding by lazy {
 		DataBindingUtil.inflate(inflater, getLayoutRes(), container, false) as T
 	}
@@ -21,9 +21,6 @@ abstract class BaseDialog<T : ViewDataBinding> : DialogFragment() {
 	private var container: ViewGroup? = null
 
 	abstract fun getLayoutRes(): Int
-	abstract fun setupBinding()
-	abstract fun getDialogWidth(): Int
-	abstract fun getDialogHeight(): Int
 
 	override fun onCreateView(
 		inflater: LayoutInflater,
@@ -38,13 +35,13 @@ abstract class BaseDialog<T : ViewDataBinding> : DialogFragment() {
 
 	override fun onActivityCreated(savedInstanceState: Bundle?) {
 		super.onActivityCreated(savedInstanceState)
-		setupBinding()
 		binding.lifecycleOwner = this
 
-		val width = (getDialogWidth() * resources.displayMetrics.density + 0.5f).toInt()
-		val height = (getDialogHeight() * resources.displayMetrics.density + 0.5f).toInt()
+		val width = WindowManager.LayoutParams.WRAP_CONTENT
+		val height = WindowManager.LayoutParams.WRAP_CONTENT
 
 		dialog?.window?.setLayout(width, height)
+		dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 	}
 
 	fun toast(content: String) {
