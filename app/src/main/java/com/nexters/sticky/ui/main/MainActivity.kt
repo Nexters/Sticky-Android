@@ -111,7 +111,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 		moveHorizontally(binding.btnPauseChallenge, 0F)
 		GlobalScope.launch {
 			delay(animationDuration)
-			binding.btnStartShareChallenge.setBackgroundResource(R.drawable.main_button_background_white)
+			binding.btnStartShareChallenge.setBackgroundResource(R.drawable.main_button_background_disable)
 		}
 	}
 
