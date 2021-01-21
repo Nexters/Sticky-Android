@@ -5,6 +5,5 @@
         <item name="android:textColorPrimary">#40ffffff</item>
         <item name="android:textColorSecondary">#ffffff</item>
         <item name="android:textStyle">bold</item>
-
     </style>
 </resources>
