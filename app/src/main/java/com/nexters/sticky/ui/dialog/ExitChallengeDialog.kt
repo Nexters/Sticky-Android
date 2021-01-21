@@ -3,6 +3,7 @@ package com.nexters.sticky.ui.dialog
 import com.nexters.sticky.R
 import com.nexters.sticky.base.BaseDialog
 import com.nexters.sticky.databinding.DialogLayoutBinding
+import com.nexters.sticky.ui.dialog.DialogType.EXIT_CHALLENGE
 
 class ExitChallengeDialog : BaseDialog<DialogLayoutBinding>() {
 	override fun getLayoutRes() = R.layout.dialog_layout
@@ -15,10 +16,10 @@ class ExitChallengeDialog : BaseDialog<DialogLayoutBinding>() {
 	}
 
 	private fun initView() {
-		binding.apply {
-			tvTitle.text = "챌린지 종료"
-			tvDescription.text = "챌린지가 00때문에 종료되었습니다.\n최종 기록을 공유할까요?"
-			tvButtonDoAction.text = "공유하기"
+		context?.let {
+			binding.tvTitle.text = it.resources.getText(EXIT_CHALLENGE.titleRes)
+			binding.tvDescription.text = it.resources.getText(EXIT_CHALLENGE.descriptionRes)
+			binding.tvButtonDoAction.text = it.resources.getText(EXIT_CHALLENGE.doActionRes)
 		}
 	}
 
