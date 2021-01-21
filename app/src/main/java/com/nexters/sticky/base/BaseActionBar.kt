@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.isVisible
 import com.nexters.sticky.R
 
 class BaseActionBar {
@@ -47,6 +48,12 @@ class BaseActionBar {
 		view.findViewById<TextView>(res)?.let {
 			it.text = text
 			it.visibility = View.VISIBLE
+		}
+	}
+
+	fun setVisibility(res: Int) {
+		view.findViewById<ImageView>(res)?.let {
+			it.isVisible = it.visibility != View.VISIBLE
 		}
 	}
 }
