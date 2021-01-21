@@ -26,7 +26,7 @@ class MainViewModel @ViewModelInject constructor(private val sampleRepository: S
 	private val formatDay = "%d일"
 	private val base60 = 60
 	private val base24 = 24
-	private val durationTimeMillis = 1L
+	private val durationTimeMillis = 1000L
 
 	fun setChallengeStatus(status: CHALLENGE) {
 		challengeStatus.value = status
@@ -50,12 +50,12 @@ class MainViewModel @ViewModelInject constructor(private val sampleRepository: S
 			val tickSeconds = 1
 
 			for (seconds in tickSeconds..totalSeconds) {
+				delay(durationTimeMillis)
+
 				second.value = String.format(format, TimeUnit.SECONDS.toSeconds(seconds) % base60)
 				minute.value = String.format(format, TimeUnit.SECONDS.toMinutes(seconds) % base60)
 				hour.value = String.format(format, TimeUnit.SECONDS.toHours(seconds) % base24)
 				day.value = String.format(formatDay, TimeUnit.SECONDS.toDays(seconds))
-
-				delay(durationTimeMillis)
 			}
 		}
 	}
