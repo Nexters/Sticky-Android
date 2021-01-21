@@ -48,17 +48,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 	}
 
 	private fun initView() {
-		setTimeText()
 		setRecyclerView()
-	}
-
-	private fun setTimeText() {
-		with(viewModel) {
-			setTextDay("0")
-			setTextHour("00")
-			setTextMinute("00")
-			setTextSecond("00")
-		}
 	}
 
 	private fun setRecyclerView() {
@@ -97,8 +87,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 	private fun observeViewModel() {
 		viewModel.challengeStatus.observe(this@MainActivity, Observer { status ->
 			when (status) {
-				CHALLENGE.START -> setStartView()
-				CHALLENGE.STOP -> setStopView()
+				CHALLENGE.START -> {
+					setStartView()
+					viewModel.startTimer()
+				}
+				CHALLENGE.STOP -> {
+					setStopView()
+					viewModel.stopTimer()
+				}
 				else -> toast("pause")
 			}
 		})
