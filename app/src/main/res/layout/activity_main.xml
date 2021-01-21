@@ -76,7 +76,7 @@
                 android:text="@{vm.second}"
                 android:textAlignment="center"
                 android:textSize="30sp"
-                app:layout_constraintBottom_toTopOf="@id/btn_start_challenge"
+                app:layout_constraintBottom_toTopOf="@id/btn_start_share_challenge"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_divisor"
@@ -93,8 +93,25 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
+        <TextView
+                android:id="@+id/tv_can_not_start_challenge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"
+                android:background="@drawable/main_text_background"
+                android:padding="12dp"
+                android:text="현재 집에 있지 않아서 시작할 수 없어요!"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@id/btn_start_share_challenge"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="현재 집에 있지 않아서 시작할 수 없어요!"
+                tools:visibility="visible" />
+
         <ImageView
-                android:id="@+id/btn_start_challenge"
+                android:id="@+id/btn_start_share_challenge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="40dp"
