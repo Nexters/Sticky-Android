@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.nexters.sticky.R
 import com.nexters.sticky.base.BaseActivity
 import com.nexters.sticky.databinding.ActivityMainBinding
+import com.nexters.sticky.ui.dialog.ExitChallengeDialog
 import com.nexters.sticky.ui.main.MainViewModel.CHALLENGE
 import com.nexters.sticky.ui.main.adapter.MainAdapter
 import com.nexters.sticky.ui.main.adapter.MainItemDecorator
@@ -142,7 +143,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
 	private fun startActionBarView() {
 		actionBar.clickListener(R.id.btn_close_button) {
-			toast("stop challenge")
+			ExitChallengeDialog().show(supportFragmentManager, "")
 		}
 
 		actionBar.setIsVisible(R.id.img_heart)
