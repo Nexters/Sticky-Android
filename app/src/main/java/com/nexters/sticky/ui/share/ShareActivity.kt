@@ -1,11 +1,9 @@
 package com.nexters.sticky.ui.share
 
-import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import androidx.activity.viewModels
 import androidx.core.content.FileProvider
 import com.google.android.material.tabs.TabLayoutMediator
@@ -14,7 +12,6 @@ import com.nexters.sticky.base.BaseActivity
 import com.nexters.sticky.databinding.ActivityShareBinding
 import com.nexters.sticky.ui.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
-import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 
@@ -75,8 +72,8 @@ class ShareActivity : BaseActivity<ActivityShareBinding>() {
 		//val bmp = BitmapFactory.decodeFile("${cacheDir.absolutePath}/capture.jpg")
 		//val uri: Uri? = getImageUri(this, bmp)
 		getCaptureScreen()
-		val file = File(cacheDir,"capture.jpg")
-		val uri: Uri? = FileProvider.getUriForFile(this , packageName, file)
+		val file = File(cacheDir, "capture.jpg")
+		val uri: Uri? = FileProvider.getUriForFile(this, packageName, file)
 		val intent = Intent(android.content.Intent.ACTION_SEND)
 		intent.type = "image/*"
 		intent.putExtra(Intent.EXTRA_STREAM, uri)
@@ -101,8 +98,8 @@ class ShareActivity : BaseActivity<ActivityShareBinding>() {
 //			val bmp = BitmapFactory.decodeFile("$cacheDir/capture.jpg")
 //			val uri: Uri? = getImageUri(this, bmp)
 			getCaptureScreen()
-			val file = File(cacheDir,"capture.jpg")
-			val uri: Uri? = FileProvider.getUriForFile(this , packageName, file)
+			val file = File(cacheDir, "capture.jpg")
+			val uri: Uri? = FileProvider.getUriForFile(this, packageName, file)
 			val intent = Intent(android.content.Intent.ACTION_SEND)
 			intent.type = "image/*"
 			intent.putExtra(Intent.EXTRA_STREAM, uri)
@@ -110,7 +107,8 @@ class ShareActivity : BaseActivity<ActivityShareBinding>() {
 			startActivity(intent)
 		}
 	}
-	private fun getCaptureScreen(){
+
+	private fun getCaptureScreen() {
 		val storage: String = cacheDir.toString()
 		val container = binding.captureLayout
 		container.buildDrawingCache()
@@ -122,7 +120,7 @@ class ShareActivity : BaseActivity<ActivityShareBinding>() {
 			tempFile.createNewFile()
 			val fos = FileOutputStream(tempFile)
 			captureView.compress(Bitmap.CompressFormat.JPEG, 100, fos)
-		}catch (e : Exception){
+		} catch (e: Exception) {
 			e.printStackTrace()
 		}
 	}
