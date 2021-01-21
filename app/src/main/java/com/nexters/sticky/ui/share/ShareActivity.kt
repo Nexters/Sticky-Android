@@ -15,6 +15,8 @@ import com.nexters.sticky.databinding.ActivityShareBinding
 import com.nexters.sticky.ui.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileOutputStream
 
 @AndroidEntryPoint
 class ShareActivity : BaseActivity<ActivityShareBinding>() {
@@ -60,13 +62,16 @@ class ShareActivity : BaseActivity<ActivityShareBinding>() {
 
 	private fun setOnClickListener() {
 		binding.shareBtn.setOnClickListener {
-			setShareImage()
+			//setShareImage()
+			getCaptureScreen()
 		}
 		binding.instagramShareBtn.setOnClickListener {
-			instagramShare()
+			//instagramShare()
+			getCaptureScreen()
 		}
 	}
 
+	@Suppress("DEPRECATION")
 	private fun getImageUri(context: Context, inImage: Bitmap?): Uri? {
 		val bytes = ByteArrayOutputStream()
 		inImage!!.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
@@ -80,7 +85,7 @@ class ShareActivity : BaseActivity<ActivityShareBinding>() {
 	}
 
 	private fun setShareImage() {
-		val bmp = BitmapFactory.decodeResource(resources, R.drawable.abc)
+		val bmp = BitmapFactory.decodeFile("$cacheDir/capture.jpg")
 		val uri: Uri? = getImageUri(this, bmp)
 		val intent = Intent(android.content.Intent.ACTION_SEND)
 		intent.type = "image/*"
@@ -100,13 +105,36 @@ class ShareActivity : BaseActivity<ActivityShareBinding>() {
 			)
 			startActivity(intent)          // 앱이 설치되어 있지 않은 경우 Play스토어로 이동
 		} else {
-			val backgroundAssetUri: Uri =
-				Uri.parse("android.resource://$packageName/drawable/abc")
+			//val file = cacheDir.toString()
+//			val backgroundAssetUri: Uri =
+//				Uri.parse( "android.resource://$packageName/drawable/abc")
+//			val backgroundAssetUri: Uri =
+//				Uri.parse(cacheDir.toString() + "/capture.jpg")
+			val bmp = BitmapFactory.decodeFile("$cacheDir/capture.jpg")
+			val uri: Uri? = getImageUri(this, bmp)
 			val intent = Intent(android.content.Intent.ACTION_SEND)
 			intent.type = "image/*"
-			intent.putExtra(Intent.EXTRA_STREAM, backgroundAssetUri)
+			intent.putExtra(Intent.EXTRA_STREAM, uri)
 			intent.setPackage("com.instagram.android")
 			startActivity(intent)
+		}
+	}
+	private fun getCaptureScreen(){
+		val storage:File = cacheDir
+		val container = binding.captureLayout
+		container.buildDrawingCache()
+		val captureView = container.drawingCache
+		val filename = "capture.jpg"
+		val tempFile = File(storage, filename)
+
+		try {
+			tempFile.createNewFile()
+			val fos = FileOutputStream(tempFile)
+			captureView.compress(Bitmap.CompressFormat.JPEG, 50, fos)
+			//instagramShare()
+			setShareImage()
+		}catch (e : Exception){
+			e.printStackTrace()
 		}
 	}
 }

@@ -24,10 +24,10 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginEnd="70dp"
                 android:layout_marginStart="70dp"
-                android:layout_marginTop="30dp"/>
-
-        <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/share_viewPager"
+                android:layout_marginTop="30dp"
+                />
+        <LinearLayout
+                android:id="@+id/capture_layout"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toTopOf="@+id/share_text_Linear"
@@ -37,15 +37,20 @@
                 android:layout_marginStart="60dp"
                 android:layout_marginEnd="60dp"
                 android:layout_marginTop="36dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="20dp">
+        <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/share_viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:background="#ffffff"
                 />
+        </LinearLayout>
         <LinearLayout
                 android:id="@+id/share_text_Linear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toTopOf="@+id/instagram_share_btn"
-                app:layout_constraintTop_toBottomOf="@id/share_viewPager"
+                app:layout_constraintTop_toBottomOf="@+id/capture_layout"
                 android:gravity="center">
         <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/share_txt1"
@@ -54,7 +59,7 @@
                 android:textColor="#ffffff"
                 android:textSize="16sp"
                 android:text="나의 "
-            />
+                />
         <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/share_content_txt"
                 android:layout_width="wrap_content"
