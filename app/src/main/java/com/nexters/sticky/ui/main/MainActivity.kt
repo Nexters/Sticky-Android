@@ -1,7 +1,10 @@
 package com.nexters.sticky.ui.main
 
-import android.content.Intent
+import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.util.TypedValue
+import android.view.View
+import android.view.animation.*
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nexters.sticky.R
@@ -9,7 +12,6 @@ import com.nexters.sticky.base.BaseActivity
 import com.nexters.sticky.databinding.ActivityMainBinding
 import com.nexters.sticky.ui.main.adapter.MainAdapter
 import com.nexters.sticky.ui.main.adapter.MainItemDecorator
-import com.nexters.sticky.ui.share.ShareActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -50,9 +52,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 	}
 
 	private fun setOnClickListener() {
-		binding.btnShare.setOnClickListener {
-			val intent = Intent(this@MainActivity, ShareActivity::class.java)
-			startActivity(intent)
+//		binding.btnShare.setOnClickListener {
+//			val intent = Intent(this@MainActivity, ShareActivity::class.java)
+//			startActivity(intent)
+//		}
+
+		binding.btnStartChallenge.setOnClickListener {
+			startAnimation()
 		}
 	}
 
@@ -71,5 +77,23 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 			layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
 			addItemDecoration(MainItemDecorator())
 		}
+	}
+
+	private fun startAnimation() {
+		binding.btnStartChallenge.setBackgroundResource(R.drawable.main_button_background_black)
+		moveHorizontally(binding.btnStartChallenge, 80F)
+		moveHorizontally(binding.btnPauseChallenge, -80F)
+	}
+
+	private fun moveHorizontally(view: View, distance: Float) {
+		val moveDistance = TypedValue.applyDimension(
+			TypedValue.COMPLEX_UNIT_DIP,
+			distance,
+			binding.root.resources.displayMetrics
+		)
+
+		val animation = ObjectAnimator.ofFloat(view, "translationX", moveDistance)
+		animation.duration = 1000
+		animation.start()
 	}
 }

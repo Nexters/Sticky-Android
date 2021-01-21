@@ -12,7 +12,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/brand_color">
 
         <TextView
                 android:id="@+id/tv_day"
@@ -82,39 +83,26 @@
                 tools:text="00" />
 
         <ImageView
-                android:id="@+id/btn_start_challenge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="40dp"
-                android:src="@drawable/ic_launcher_foreground"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toTopOf="@id/recycler_view"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:src="@drawable/ic_launcher_foreground" />
-
-        <ImageView
                 android:id="@+id/btn_pause_challenge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="40dp"
-                android:src="@drawable/ic_launcher_background"
+                android:background="@drawable/main_button_background_white"
+                android:src="@drawable/ic_launcher_foreground"
                 app:layout_constraintBottom_toTopOf="@id/recycler_view"
-                app:layout_constraintEnd_toStartOf="@id/btn_share"
-                app:layout_constraintHorizontal_chainStyle="spread"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:src="@drawable/ic_launcher_background" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
-                android:id="@+id/btn_share"
+                android:id="@+id/btn_start_challenge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="40dp"
-                android:src="@drawable/ic_launcher_background"
+                android:background="@drawable/main_button_background_white"
+                android:src="@drawable/ic_launcher_foreground"
                 app:layout_constraintBottom_toTopOf="@id/recycler_view"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/btn_pause_challenge"
-                tools:src="@drawable/ic_launcher_background" />
+                app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view"
