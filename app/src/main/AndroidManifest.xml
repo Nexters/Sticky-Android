@@ -15,6 +15,12 @@
                 android:screenOrientation="portrait" />
         <activity
                 android:name=".ui.main.MainActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".ui.gps.GetGpsPermissionActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".ui.SplashActivity"
                 android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,8 +32,8 @@
         <provider
                 android:name="androidx.core.content.FileProvider"
                 android:authorities="com.nexters.sticky"
-                android:grantUriPermissions="true"
-                android:exported="false">
+                android:exported="false"
+                android:grantUriPermissions="true">
             <meta-data
                     android:name="android.support.FILE_PROVIDER_PATHS"
                     android:resource="@xml/file_path" />

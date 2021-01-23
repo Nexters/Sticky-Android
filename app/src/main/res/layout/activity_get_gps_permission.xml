@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/brand_color">
+
+    <ImageView
+            android:id="@+id/img_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/image_logo" />
+
+    <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:alpha="0"
+            android:text="@string/splash_description"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            tools:alpha="1" />
+
+    <TextView
+            android:id="@+id/tv_go_to_gps_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="163dp"
+            android:alpha="0"
+            android:background="@drawable/splash_button_background"
+            android:paddingStart="30dp"
+            android:paddingTop="14dp"
+            android:paddingEnd="30dp"
+            android:paddingBottom="14dp"
+            android:text="@string/splash_set_gps_permission"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            tools:alpha="1" />
+
+</RelativeLayout>

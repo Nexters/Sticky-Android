@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">sticky</string>
 
+    <!-- splash -->
+    <string name="splash_description">“Sticky”는 집에서 사용하는 챌린지 서비스입니다. 집 위치를 설정하기 위해 위치정보 사용을 동의해주세요!</string>
+    <string name="splash_set_gps_permission">위치정보 설정하기</string>
+
     <!-- dialog -->
     <string name="dialog_terminate_challenge_title">챌린지 종료</string>
     <string name="dialog_terminate_challenge_description">챌린지가 00때문에 종료되었습니다.\n최종 기록을 공유할까요?</string>
