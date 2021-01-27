@@ -10,7 +10,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.nexters.sticky.R
 import com.nexters.sticky.base.BaseActivity
 import com.nexters.sticky.databinding.ActivityShareBinding
-import com.nexters.sticky.ui.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import java.io.FileOutputStream

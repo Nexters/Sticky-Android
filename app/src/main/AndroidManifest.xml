@@ -10,6 +10,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.Sticky">
+        <activity android:name=".ui.map.MapActivity"></activity>
         <activity
                 android:name=".ui.share.ShareActivity"
                 android:screenOrientation="portrait" />
@@ -38,6 +39,10 @@
                     android:name="android.support.FILE_PROVIDER_PATHS"
                     android:resource="@xml/file_path" />
         </provider>
+
+        <meta-data
+                android:name="com.google.android.geo.API_KEY"
+                android:value="${mapsApiKey}" />
     </application>
 
 </manifest>

@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">sticky</string>
-
     <!-- splash -->
     <string name="splash_description">“Sticky”는 집에서 사용하는 챌린지 서비스입니다. 집 위치를 설정하기 위해 위치정보 사용을 동의해주세요!</string>
     <string name="splash_set_gps_permission">위치정보 설정하기</string>
@@ -16,4 +15,7 @@
     <string name="dialog_exit">종료하기</string>
     <string name="dialog_cancel">취소하기</string>
 
+    <!-- map -->
+    <string name="map_set_home">집으로 설정하기</string>
+    <string name="map_reset_address"><u>여기가 아닌가요?</u></string>
 </resources>
