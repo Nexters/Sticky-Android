@@ -4,7 +4,11 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
 }
-
+Properties properties = new Properties()
+if (rootProject.file("local.properties").exists()) {
+    properties.load(rootProject.file("local.properties").newDataInputStream())
+}
+def mapsApiKey = properties.getProperty("MAPS_API_KEY", "")
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -16,12 +20,17 @@ android {
         versionCode 1
         versionName "1.0"
 
+        manifestPlaceholders = [ mapsApiKey : mapsApiKey ]
+
+        buildConfigField("String", "MAPS_API_KEY", "\"$mapsApiKey\"" )
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
             minifyEnabled false
+            //resValue "String", "MAPS_API_KEY", "{\"$mapsApiKey\"}" 릴리즈용
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
