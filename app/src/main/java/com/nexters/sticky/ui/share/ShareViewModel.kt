@@ -1,10 +1,9 @@
 package com.nexters.sticky.ui.share
 
-import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.*
-import com.nexters.sticky.data.repository.SampleRepository
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 
-class ShareViewModel: ViewModel() {
+class ShareViewModel : ViewModel() {
 
 	val text = MutableLiveData<String>()
 //    var sampleList: LiveData<MutableList<Sample>> = MutableLiveData()

@@ -20,9 +20,9 @@ android {
         versionCode 1
         versionName "1.0"
 
-        manifestPlaceholders = [ mapsApiKey : mapsApiKey ]
+        manifestPlaceholders = [mapsApiKey: mapsApiKey]
 
-        buildConfigField("String", "MAPS_API_KEY", "\"$mapsApiKey\"" )
+        buildConfigField("String", "MAPS_API_KEY", "\"$mapsApiKey\"")
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

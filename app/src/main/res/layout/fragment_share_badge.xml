@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
                 name="vm"
                 type="com.nexters.sticky.ui.share.ShareViewModel" />
@@ -11,17 +13,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".ui.share.ShareBadgeFragment">
+
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
             <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_marginTop="20dp"
-                    android:layout_marginStart="20dp"
-                    >
+                    android:layout_marginStart="20dp">
+
                 <TextView
                         android:id="@+id/badge_level_txt1"
                         android:layout_width="wrap_content"
@@ -29,16 +33,15 @@
                         android:textColor="@color/brand_color"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        android:text="LV.30"
-                        />
+                        android:text="LV.30" />
+
                 <TextView
                         android:id="@+id/badge_level_txt2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/brand_color"
                         android:textSize="16sp"
-                        android:text="  이불 밖은 위험해"
-                        />
+                        android:text="  이불 밖은 위험해" />
             </LinearLayout>
 
             <TextView
@@ -49,8 +52,8 @@
                     android:textSize="32sp"
                     android:layout_marginTop="20dp"
                     android:layout_marginStart="20dp"
-                    android:text="집에서"
-                    />
+                    android:text="집에서" />
+
             <TextView
                     android:id="@+id/badge_time_txt"
                     android:layout_width="wrap_content"
@@ -59,8 +62,8 @@
                     android:textStyle="bold"
                     android:textSize="32sp"
                     android:layout_marginStart="20dp"
-                    android:text="10일 \n23시간 34분"
-                    />
+                    android:text="10일 \n23시간 34분" />
+
             <TextView
                     android:id="@+id/badge_txt2"
                     android:layout_width="wrap_content"
@@ -68,15 +71,14 @@
                     android:textColor="@color/black"
                     android:textSize="32sp"
                     android:layout_marginStart="20dp"
-                    android:text="동안 \n안나갔다. "
-                    />
+                    android:text="동안 \n안나갔다. " />
+
             <ImageView
                     android:layout_width="60dp"
                     android:layout_height="27dp"
                     android:src="@drawable/ic_image_logo"
                     android:layout_marginStart="90dp"
-                    android:layout_marginTop="30dp"
-                />
+                    android:layout_marginTop="30dp" />
         </LinearLayout>
 
     </FrameLayout>

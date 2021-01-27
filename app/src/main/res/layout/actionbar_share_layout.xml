@@ -19,7 +19,6 @@
             tools:visibility="visible" />
 
 
-
     <ImageView
             android:id="@+id/image_save_btn"
             android:layout_width="90dp"
