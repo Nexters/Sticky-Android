@@ -12,7 +12,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.nexters.sticky.R
 import com.nexters.sticky.base.BaseActivity
 import com.nexters.sticky.databinding.ActivityMapBinding
-import com.nexters.sticky.ui.address.SetAddressActivity
+import com.nexters.sticky.ui.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -45,8 +45,9 @@ class MapActivity : BaseActivity<ActivityMapBinding>(), OnMapReadyCallback {
 	}
 
 	private fun setOnClickListener() {
-		binding.setHomeBtn.setOnClickListener() {
-
+		binding.setHomeBtn.setOnClickListener {
+			val intent = Intent(this, MainActivity::class.java)
+			startActivity(intent)
 		}
 	}
 
