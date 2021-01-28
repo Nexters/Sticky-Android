@@ -46,7 +46,7 @@ class MapActivity : BaseActivity<ActivityMapBinding>(), OnMapReadyCallback {
 
 	private fun setOnClickListener() {
 		binding.setHomeBtn.setOnClickListener {
-			val intent = Intent(this, MainActivity::class.java)
+			val intent = Intent(this@MapActivity, MainActivity::class.java)
 			startActivity(intent)
 		}
 	}
