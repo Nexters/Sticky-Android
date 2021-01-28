@@ -10,7 +10,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.Sticky">
-        <activity android:name=".ui.map.MapActivity"></activity>
+        <activity android:name=".ui.address.SetAddressActivity"></activity>
+        <activity android:name=".ui.map.MapActivity" />
         <activity
                 android:name=".ui.share.ShareActivity"
                 android:screenOrientation="portrait" />

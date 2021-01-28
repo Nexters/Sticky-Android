@@ -1,5 +1,6 @@
 package com.nexters.sticky.ui.map
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -11,6 +12,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.nexters.sticky.R
 import com.nexters.sticky.base.BaseActivity
 import com.nexters.sticky.databinding.ActivityMapBinding
+import com.nexters.sticky.ui.address.SetAddressActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -18,7 +20,7 @@ class MapActivity : BaseActivity<ActivityMapBinding>(), OnMapReadyCallback {
 	override val viewModel: MapViewModel by viewModels()
 
 	override val layoutRes = R.layout.activity_map
-	override val actionBarLayoutRes = R.layout.actionbar_share_layout
+	override val actionBarLayoutRes = R.layout.actionbar_setaddress_layout
 	override val statusBarColorRes = R.color.purple_200
 	private lateinit var mMap: GoogleMap
 	override fun setUpBinding() {
@@ -30,6 +32,9 @@ class MapActivity : BaseActivity<ActivityMapBinding>(), OnMapReadyCallback {
 		viewModel.setText("주소주소주소주소주소주소주소주소")
 		val mapFragment = supportFragmentManager.findFragmentById(R.id.map_fragment) as SupportMapFragment
 		mapFragment.getMapAsync(this)
+
+		setOnClickListener()
+		setActionBar()
 	}
 
 	override fun onMapReady(googleMap: GoogleMap) {
@@ -38,4 +43,17 @@ class MapActivity : BaseActivity<ActivityMapBinding>(), OnMapReadyCallback {
 		mMap.addMarker(MarkerOptions().position(marker).title("Marker LAB"))
 		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(marker, 18F))
 	}
+
+	private fun setOnClickListener() {
+		binding.setHomeBtn.setOnClickListener() {
+
+		}
+	}
+
+	private fun setActionBar() {
+		actionBar.clickListener(R.id.back_main_btn) {
+			onBackPressed()
+		}
+	}
+
 }

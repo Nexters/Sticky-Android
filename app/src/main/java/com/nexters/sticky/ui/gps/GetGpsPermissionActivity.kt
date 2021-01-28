@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.nexters.sticky.R
 import com.nexters.sticky.databinding.ActivityGetGpsPermissionBinding
+import com.nexters.sticky.ui.address.SetAddressActivity
 import com.nexters.sticky.ui.map.MapActivity
 import com.nexters.sticky.utils.showAnimation
 
@@ -32,10 +33,8 @@ class GetGpsPermissionActivity : AppCompatActivity() {
 
 	private fun goToMain() {
 		binding.imgLogo.setOnClickListener {
-			val intent = Intent(this, MapActivity::class.java)
+			val intent = Intent(this, SetAddressActivity::class.java)
 			startActivity(intent)
-
-			finish()
 		}
 	}
 
