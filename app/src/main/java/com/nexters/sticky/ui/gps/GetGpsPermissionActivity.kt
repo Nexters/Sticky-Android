@@ -2,7 +2,9 @@ package com.nexters.sticky.ui.gps
 
 import android.animation.ObjectAnimator
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import android.util.TypedValue
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -35,6 +37,16 @@ class GetGpsPermissionActivity : AppCompatActivity() {
 			val intent = Intent(this, MapActivity::class.java)
 			startActivity(intent)
 
+			finish()
+		}
+
+		binding.tvGoToGpsSettings.setOnClickListener {
+			val packageName = Uri.fromParts("package", packageName, null)
+			val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+				addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+				data = packageName
+			}
+			startActivity(intent)
 			finish()
 		}
 	}
