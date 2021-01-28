@@ -10,10 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.nexters.sticky.R
 import com.nexters.sticky.databinding.ActivityGetGpsPermissionBinding
-import com.nexters.sticky.ui.map.MapActivity
 import com.nexters.sticky.utils.showAnimation
 
-class GetGpsPermissionActivity : AppCompatActivity() {
+class NeedPermissionActivity : AppCompatActivity() {
 
 	lateinit var binding: ActivityGetGpsPermissionBinding
 
@@ -29,26 +28,20 @@ class GetGpsPermissionActivity : AppCompatActivity() {
 		window.statusBarColor = ContextCompat.getColor(this, R.color.brand_color)
 
 		setAnimation()
-		goToMain() // 개발 편의를 위해 임시로 작성 - 로고 클릭 시 메인으로 이동
-	}
-
-	private fun goToMain() {
-		binding.imgLogo.setOnClickListener {
-			val intent = Intent(this, MapActivity::class.java)
-			startActivity(intent)
-
-			finish()
-		}
 
 		binding.tvGoToGpsSettings.setOnClickListener {
-			val packageName = Uri.fromParts("package", packageName, null)
-			val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
-				addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-				data = packageName
-			}
-			startActivity(intent)
-			finish()
+			goToSettings()
 		}
+	}
+
+	private fun goToSettings() {
+		val packageName = Uri.fromParts("package", packageName, null)
+		val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+			addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+			data = packageName
+		}
+		startActivity(intent)
+		finish()
 	}
 
 	private fun setAnimation() {

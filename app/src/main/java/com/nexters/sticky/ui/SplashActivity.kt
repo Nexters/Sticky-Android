@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.nexters.sticky.R
-import com.nexters.sticky.ui.gps.GetGpsPermissionActivity
+import com.nexters.sticky.ui.gps.NeedPermissionActivity
 import com.nexters.sticky.ui.main.MainActivity
 import com.nexters.sticky.utils.LOCATION_PERMISSION_REQUEST_CODE
 import com.nexters.sticky.utils.checkLocationPermission
@@ -51,7 +51,7 @@ class SplashActivity : AppCompatActivity() {
 	}
 
 	private fun goToNeedPermissionActivity() {
-		val intent = Intent(this@SplashActivity, GetGpsPermissionActivity::class.java).apply {
+		val intent = Intent(this@SplashActivity, NeedPermissionActivity::class.java).apply {
 			addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
 		}
 		startActivity(intent)
