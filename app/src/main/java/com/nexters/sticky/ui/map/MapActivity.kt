@@ -68,8 +68,7 @@ class MapActivity : BaseActivity<ActivityMapBinding>(), OnMapReadyCallback, Acti
 		viewModel.setText("주소주소주소주소주소주소주소주소")
 
 		window.setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-
-		locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+		locationRequest = LocationRequest().setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
 			.setInterval(UPDATE_INTERVAL_MS.toLong())
 			.setFastestInterval(FASTEST_UPDATE_INTERVAL_MS.toLong())
 
@@ -107,9 +106,9 @@ class MapActivity : BaseActivity<ActivityMapBinding>(), OnMapReadyCallback, Acti
 		mMap.uiSettings.isMyLocationButtonEnabled = true
 		mMap.setOnMapClickListener { }
 
-		val marker = LatLng(37.555449721383795, 126.97578942646165)
-		mMap.addMarker(MarkerOptions().position(marker).title("Marker LAB"))
-		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(marker, 18F))
+//		val marker = LatLng(37.555449721383795, 126.97578942646165)
+//		mMap.addMarker(MarkerOptions().position(marker).title("Marker LAB"))
+//		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(marker, 18F))
 	}
 
 	val locationCallback: LocationCallback = object : LocationCallback() {
@@ -157,20 +156,13 @@ class MapActivity : BaseActivity<ActivityMapBinding>(), OnMapReadyCallback, Acti
 			//Log.d(TAG, "onStart : call mFusedLocationClient.requestLocationUpdates");
 			mFusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, null)
 
-			if (mMap != null)
-				mMap.isMyLocationEnabled = true
-
 		}
 
 	}
 
 	override fun onStop() {
 		super.onStop()
-		if (mFusedLocationClient != null) {
-
-			//Log.d(TAG, "onStop : call stopLocationUpdates");
-			mFusedLocationClient.removeLocationUpdates(locationCallback)
-		}
+		mFusedLocationClient.removeLocationUpdates(locationCallback)
 	}
 
 	private fun setCurrentLocation(location: Location?, markerTitle: String, markerSnippet: String) {
@@ -274,7 +266,7 @@ class MapActivity : BaseActivity<ActivityMapBinding>(), OnMapReadyCallback, Acti
 		markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
 		currentMarker = mMap.addMarker(markerOptions)
 
-		val cameraUpdate = CameraUpdateFactory.newLatLngZoom(DEFAULT_LOCATION, 15f)
+		val cameraUpdate = CameraUpdateFactory.newLatLngZoom(DEFAULT_LOCATION, 18f)
 		mMap.moveCamera(cameraUpdate)
 	}
 
@@ -288,7 +280,7 @@ class MapActivity : BaseActivity<ActivityMapBinding>(), OnMapReadyCallback, Acti
 	}
 
 	override fun onRequestPermissionsResult(permsRequestCode: Int, permissions: Array<out String>, grandResults: IntArray) {
-		if (permsRequestCode === PERMISSIONS_REQUEST_CODE && grandResults.size === REQUIRED_PERMISSIONS.size) {
+		if (permsRequestCode == PERMISSIONS_REQUEST_CODE && grandResults.size == REQUIRED_PERMISSIONS.size) {
 
 			// 요청 코드가 PERMISSIONS_REQUEST_CODE 이고, 요청한 퍼미션 개수만큼 수신되었다면
 			var check_result = true
@@ -330,6 +322,9 @@ class MapActivity : BaseActivity<ActivityMapBinding>(), OnMapReadyCallback, Acti
 		binding.setHomeBtn.setOnClickListener {
 			val intent = Intent(this@MapActivity, MainActivity::class.java)
 			startActivity(intent)
+		}
+		binding.resetAddressTxt.setOnClickListener{
+			//startLocationUpdates()
 		}
 	}
 
