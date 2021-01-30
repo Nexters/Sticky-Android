@@ -2,8 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         package="com.nexters.sticky">
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+
     <application
             android:name=".StickyApplication"
             android:allowBackup="true"
@@ -12,7 +17,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.Sticky">
-        <activity android:name=".ui.address.SetAddressActivity"></activity>
+        <activity android:name=".ui.address.SetAddressActivity" />
         <activity android:name=".ui.map.MapActivity" />
         <activity
                 android:name=".ui.share.ShareActivity"
@@ -21,7 +26,7 @@
                 android:name=".ui.main.MainActivity"
                 android:screenOrientation="portrait" />
         <activity
-                android:name=".ui.gps.GetGpsPermissionActivity"
+                android:name=".ui.gps.NeedPermissionActivity"
                 android:screenOrientation="portrait" />
         <activity
                 android:name=".ui.SplashActivity"
