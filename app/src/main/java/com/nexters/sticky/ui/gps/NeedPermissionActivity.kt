@@ -41,6 +41,7 @@ class NeedPermissionActivity : AppCompatActivity() {
 			val intent = Intent(this, SetAddressActivity::class.java)
 			startActivity(intent)
 		}
+	}
 	private fun goToSettings() {
 		val packageName = Uri.fromParts("package", packageName, null)
 		val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
