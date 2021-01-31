@@ -11,7 +11,6 @@ import androidx.core.content.ContextCompat
 import com.nexters.sticky.R
 import com.nexters.sticky.databinding.ActivityGetGpsPermissionBinding
 import com.nexters.sticky.ui.address.SetAddressActivity
-import com.nexters.sticky.ui.map.MapActivity
 import com.nexters.sticky.utils.showAnimation
 
 class NeedPermissionActivity : AppCompatActivity() {

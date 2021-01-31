@@ -6,7 +6,7 @@
 
         <variable
                 name="vm"
-                type="com.nexters.sticky.ui.address.SetAddressViewModel" />
+                type="com.nexters.sticky.ui.address.MapViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,21 +27,43 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/address_edittxt"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/find_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/address_input_backgound"
-                android:hint="@string/address_input_txt_hint"
-                android:paddingLeft="16dp"
-                android:textColor="@color/black"
-                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/address_txt" />
+                app:layout_constraintTop_toBottomOf="@+id/address_txt">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/address_edittxt"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/address_input_backgound"
+                    android:hint="@string/address_input_txt_hint"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/search_btn"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                    android:id="@+id/search_btn"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@color/Transparency"
+                    android:src="@drawable/icon_search"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
                 android:id="@+id/find_here_btn"
@@ -55,7 +77,7 @@
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/address_edittxt">
+                app:layout_constraintTop_toBottomOf="@id/find_layout">
 
             <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/find_here_icon"
@@ -77,8 +99,8 @@
         <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:background="@color/white"
                 android:layout_marginTop="20dp"
+                android:background="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/find_here_btn" />

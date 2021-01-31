@@ -7,7 +7,7 @@
 
         <variable
                 name="vm"
-                type="com.nexters.sticky.ui.map.MapViewModel" />
+                type="com.nexters.sticky.ui.address.MapViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,7 +44,7 @@
                     android:id="@+id/address_txt1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="반포자이아파트"
+                    android:text="@{vm.addressText}"
                     android:textColor="@color/white"
                     android:textSize="24sp" />
 
@@ -54,7 +54,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
                     android:layout_marginEnd="0dp"
-                    android:text="@{vm.text}"
+                    android:text="@{vm.mapAddressText}"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold" />
