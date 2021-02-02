@@ -109,10 +109,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 	private fun stopButtonAnimation() {
 		moveHorizontally(binding.btnStartShareChallenge, 0F)
 		moveHorizontally(binding.btnPauseChallenge, 0F)
-		GlobalScope.launch {
-			delay(animationDuration)
-			binding.btnStartShareChallenge.setBackgroundResource(R.drawable.main_button_background_disable)
-		}
+//		GlobalScope.launch {
+//			delay(animationDuration)
+//			binding.btnStartShareChallenge.setBackgroundResource(R.drawable.main_button_background_disable)
+//		}
 	}
 
 	private fun setStopActionBarView() {

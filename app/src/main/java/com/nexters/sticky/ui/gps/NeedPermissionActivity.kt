@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.nexters.sticky.R
 import com.nexters.sticky.databinding.ActivityGetGpsPermissionBinding
+import com.nexters.sticky.ui.address.SetAddressActivity
 import com.nexters.sticky.utils.showAnimation
 
 class NeedPermissionActivity : AppCompatActivity() {
@@ -34,6 +35,12 @@ class NeedPermissionActivity : AppCompatActivity() {
 		}
 	}
 
+	private fun goToMain() {
+		binding.imgLogo.setOnClickListener {
+			val intent = Intent(this, SetAddressActivity::class.java)
+			startActivity(intent)
+		}
+	}
 	private fun goToSettings() {
 		val packageName = Uri.fromParts("package", packageName, null)
 		val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {

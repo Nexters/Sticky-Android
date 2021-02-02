@@ -1,9 +1,11 @@
 package com.nexters.sticky.utils
 
+import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 
 const val LOCATION_PERMISSION_REQUEST_CODE = 9001
 
@@ -25,6 +27,15 @@ fun Context.checkLocationPermission(): Boolean {
 fun Context.checkPermission(permission: String): Boolean {
 	val isPermissionGranted = ActivityCompat.checkSelfPermission(this, permission)
 	return isPermissionGranted == PackageManager.PERMISSION_GRANTED
+}
+
+fun Context.checkMapPermission(): Boolean {
+	val hasFineLocationPermission = ContextCompat.checkSelfPermission(this,
+		Manifest.permission.ACCESS_FINE_LOCATION)
+	val hasCoarseLocationPermission = ContextCompat.checkSelfPermission(this,
+		Manifest.permission.ACCESS_COARSE_LOCATION)
+	return hasFineLocationPermission == PackageManager.PERMISSION_GRANTED &&
+			hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED
 }
 
 fun Activity.requestLocationPermission() {

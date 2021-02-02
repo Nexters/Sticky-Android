@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.nexters.sticky.R
+import com.nexters.sticky.ui.address.SetAddressActivity
 import com.nexters.sticky.ui.gps.NeedPermissionActivity
-import com.nexters.sticky.ui.main.MainActivity
 import com.nexters.sticky.utils.LOCATION_PERMISSION_REQUEST_CODE
 import com.nexters.sticky.utils.checkLocationPermission
 import com.nexters.sticky.utils.requestLocationPermission
@@ -59,7 +59,7 @@ class SplashActivity : AppCompatActivity() {
 	}
 
 	private fun goToMainActivity() {
-		val intent = Intent(this@SplashActivity, MainActivity::class.java)
+		val intent = Intent(this@SplashActivity, SetAddressActivity::class.java)
 		startActivity(intent)
 		finish()
 	}

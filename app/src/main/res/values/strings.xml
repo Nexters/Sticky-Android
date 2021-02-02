@@ -18,4 +18,9 @@
     <!-- map -->
     <string name="map_set_home">집으로 설정하기</string>
     <string name="map_reset_address"><u>여기가 아닌가요?</u></string>
+
+    <!-- address -->
+    <string name="address_main_txt">집 주소를 입력해주세요</string>
+    <string name="address_input_txt_hint">도로명, 건물명 또는 지번으로 검색</string>
+    <string name="address_find_txt">현재 위치로 주소 찾기</string>
 </resources>
