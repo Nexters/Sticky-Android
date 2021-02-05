@@ -35,15 +35,13 @@ import java.io.IOException
 
 
 @AndroidEntryPoint
-class MapActivity : BaseActivity<ActivityMapBinding>(), OnMapReadyCallback {
+class MapActivity : BaseActivity<ActivityMapBinding>(), OnMapReadyCallback, GoogleMap.OnMarkerDragListener {
 	override val viewModel: MapViewModel by viewModels()
 	override val layoutRes = R.layout.activity_map
 	override val actionBarLayoutRes = R.layout.actionbar_setaddress_layout
 	override val statusBarColorRes = R.color.purple_200
 	private lateinit var mMap: GoogleMap
 	private var currentMarker: Marker? = null
-	private val UPDATE_INTERVAL_MS = 1000
-	private val FASTEST_UPDATE_INTERVAL_MS = 500
 	private val PERMISSIONS_REQUEST_CODE = 100
 	var REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
 	private lateinit var mFusedLocationClient: FusedLocationProviderClient
@@ -77,6 +75,7 @@ class MapActivity : BaseActivity<ActivityMapBinding>(), OnMapReadyCallback {
 			}
 		}
 		mMap.uiSettings.isMyLocationButtonEnabled = true
+		mMap.setOnMarkerDragListener(this)
 	}
 
 	val locationCallback: LocationCallback = object : LocationCallback() {
@@ -103,8 +102,6 @@ class MapActivity : BaseActivity<ActivityMapBinding>(), OnMapReadyCallback {
 		mapFragment.getMapAsync(this)
 		window.setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 		locationRequest = LocationRequest().setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-			.setInterval(UPDATE_INTERVAL_MS.toLong())
-			.setFastestInterval(FASTEST_UPDATE_INTERVAL_MS.toLong())
 		val builder = LocationSettingsRequest.Builder()
 		builder.addLocationRequest(locationRequest)
 		mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
@@ -144,10 +141,34 @@ class MapActivity : BaseActivity<ActivityMapBinding>(), OnMapReadyCallback {
 			title(markerTitle)
 			draggable(true)
 		}
-
 		currentMarker = mMap.addMarker(markerOptions)
 
 		val cameraUpdate = CameraUpdateFactory.newLatLng(currentLatitueLongitude)
+		mMap.moveCamera(cameraUpdate)
+	}
+
+	override fun onMarkerDragStart(p0: Marker?) {
+	}
+
+	lateinit var LatitueLongitude: LatLng
+	lateinit var markerOptions: MarkerOptions
+	override fun onMarkerDrag(markerPosition: Marker) {
+		LatitueLongitude = LatLng(markerPosition.position.latitude, markerPosition.position.longitude)
+		val markerTitle: String = getCurrentAddress(LatitueLongitude)
+		viewModel.setMapAddressText(markerTitle)
+		markerOptions = MarkerOptions().apply {
+			position(markerPosition.position)
+			title(markerTitle)
+			draggable(true)
+			icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
+		}
+		currentMarker?.remove()
+	}
+
+	override fun onMarkerDragEnd(markerPosition: Marker?) {
+		currentMarker = mMap.addMarker(markerOptions)
+		val cameraUpdate = CameraUpdateFactory.newLatLngZoom(LatitueLongitude, 18f)
+
 		mMap.moveCamera(cameraUpdate)
 	}
 

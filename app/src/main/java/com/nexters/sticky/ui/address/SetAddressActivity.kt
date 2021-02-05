@@ -26,6 +26,8 @@ class SetAddressActivity : BaseActivity<ActivitySetAddressBinding>() {
 		//viewModel.setText("현재 기록")
 		setActionBar()
 		setOnClickListener()
+		viewModel.setGuideText(getText(R.string.address_guide_txt).toString())
+		viewModel.setAddressText(getText(R.string.address_tip_txt).toString())
 	}
 
 	private fun setActionBar() {
@@ -35,30 +37,29 @@ class SetAddressActivity : BaseActivity<ActivitySetAddressBinding>() {
 	}
 
 	private fun setOnClickListener() {
-		binding.findHereBtn.setOnClickListener() {
+		binding.findHereBtn.setOnClickListener {
 			val intent = Intent(this, MapActivity::class.java)
 			startActivity(intent)
 		}
-		binding.searchBtn.setOnClickListener() {
+		binding.searchBtn.setOnClickListener {
 			geocoder = Geocoder(this)
-			toast("click")
 			val address = binding.addressEdittxt.text.toString()
 			val addressList: List<Address>
 
 			try {
 				addressList = geocoder.getFromLocationName(address, 10)
-
-				val splitStr = addressList[0].toString().split(",")
-
-				viewModel.setAddressText(splitStr[0].substring(splitStr[0].indexOf("\"")+1, splitStr[0].length-2))
-				val intent = Intent(this@SetAddressActivity, MapActivity::class.java)
-				startActivity(intent)
+				if (addressList.isNotEmpty()) {
+					val splitStr = addressList[0].toString().split(",")
+					viewModel.setAddressText(splitStr[0].substring(splitStr[0].indexOf("\"") + 1, splitStr[0].length - 2))
+					//viewModel.setAddressText(splitStr.toString())
+					viewModel.removeGuideText()
+				} else {
+					viewModel.setAddressText("주소를 찾을 수 없음")
+				}
 
 			} catch (e: IOException) {
 				e.printStackTrace()
 			}
-
-
 
 		}
 	}

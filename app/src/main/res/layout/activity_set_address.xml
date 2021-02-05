@@ -96,11 +96,12 @@
                     android:textStyle="bold" />
         </LinearLayout>
 
-        <FrameLayout
+        <androidx.fragment.app.FragmentContainerView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="20dp"
                 android:background="@color/white"
+                android:name="com.nexters.sticky.ui.address.AddressResultFragment"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/find_here_btn" />
