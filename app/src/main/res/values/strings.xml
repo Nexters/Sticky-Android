@@ -20,9 +20,10 @@
     <string name="map_reset_address"><u>여기가 아닌가요?</u></string>
 
     <!-- address -->
-    <string name="address_main_txt">집 주소를 입력해주세요</string>
+    <string name="address_main_txt">주소를 입력해주세요</string>
     <string name="address_input_txt_hint">도로명, 건물명 또는 지번으로 검색</string>
     <string name="address_find_txt">현재 위치로 주소 찾기</string>
     <string name="address_guide_txt">- 도로명 + 건물번호 (예 : 강남대로 570) \n- 동/읍/면/리 + 번지 (예 : 신천동 42) \n- 건물명, 아파트명 (예 : 반포자이아파트)</string>
     <string name="address_tip_txt">Tip</string>
+    <string name="address_warn_txt">이후에 주소를 수정하면 모든 기록이 초기화됩니다.</string>
 </resources>

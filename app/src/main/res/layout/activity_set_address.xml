@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/brand_color">
+            android:background="@color/white">
 
         <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/address_txt"
@@ -21,7 +21,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/address_main_txt"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -42,16 +42,19 @@
             <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/address_edittxt"
                     android:layout_width="0dp"
-                    android:layout_height="48dp"
+                    android:layout_height="24dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="8dp"
-                    android:background="@drawable/address_input_backgound"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/address_input_edittext_background"
                     android:hint="@string/address_input_txt_hint"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toStartOf="@+id/search_btn"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
 
             <ImageButton
                     android:id="@+id/search_btn"
@@ -91,7 +94,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:text="@string/address_find_txt"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />
         </LinearLayout>

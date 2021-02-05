@@ -15,7 +15,7 @@ class SetAddressActivity : BaseActivity<ActivitySetAddressBinding>() {
 
 	override val layoutRes = R.layout.activity_set_address
 	override val actionBarLayoutRes = R.layout.actionbar_setaddress_layout
-	override val statusBarColorRes = R.color.purple_200
+	override val statusBarColorRes = R.color.white
 	lateinit var geocoder: Geocoder
 	override fun setUpBinding() {
 		binding.vm = viewModel

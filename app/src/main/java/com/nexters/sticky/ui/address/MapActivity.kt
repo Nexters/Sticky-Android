@@ -39,7 +39,7 @@ class MapActivity : BaseActivity<ActivityMapBinding>(), OnMapReadyCallback, Goog
 	override val viewModel: MapViewModel by viewModels()
 	override val layoutRes = R.layout.activity_map
 	override val actionBarLayoutRes = R.layout.actionbar_setaddress_layout
-	override val statusBarColorRes = R.color.purple_200
+	override val statusBarColorRes = R.color.white
 	private lateinit var mMap: GoogleMap
 	private var currentMarker: Marker? = null
 	private val PERMISSIONS_REQUEST_CODE = 100
@@ -192,7 +192,6 @@ class MapActivity : BaseActivity<ActivityMapBinding>(), OnMapReadyCallback, Goog
 
 
 		return if (addresses == null || addresses.isEmpty()) {
-			toast("주소 미발견")
 			"주소 미발견"
 		} else {
 			val address: Address = addresses[0]
