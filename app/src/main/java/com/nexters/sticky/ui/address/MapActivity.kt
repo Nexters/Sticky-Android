@@ -162,10 +162,10 @@ class MapActivity : BaseActivity<ActivityMapBinding>(), OnMapReadyCallback, Goog
 			draggable(true)
 			icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
 		}
-		currentMarker?.remove()
 	}
 
 	override fun onMarkerDragEnd(markerPosition: Marker?) {
+		currentMarker?.remove()
 		currentMarker = mMap.addMarker(markerOptions)
 		val cameraUpdate = CameraUpdateFactory.newLatLngZoom(LatitueLongitude, 18f)
 
