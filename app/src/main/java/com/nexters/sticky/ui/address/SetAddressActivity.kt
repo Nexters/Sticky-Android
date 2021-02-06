@@ -42,25 +42,28 @@ class SetAddressActivity : BaseActivity<ActivitySetAddressBinding>() {
 			startActivity(intent)
 		}
 		binding.searchBtn.setOnClickListener {
-			geocoder = Geocoder(this)
-			val address = binding.addressEdittxt.text.toString()
-			val addressList: List<Address>
+			geoCoder()
+		}
+	}
 
-			try {
-				addressList = geocoder.getFromLocationName(address, 10)
-				if (addressList.isNotEmpty()) {
-					val splitStr = addressList[0].toString().split(",")
-					viewModel.setAddressText(splitStr[0].substring(splitStr[0].indexOf("\"") + 1, splitStr[0].length - 2))
-					//viewModel.setAddressText(splitStr.toString())
-					viewModel.removeGuideText()
-				} else {
-					viewModel.setAddressText("주소를 찾을 수 없음")
-				}
+	private fun geoCoder(){
+		geocoder = Geocoder(this)
+		val address = binding.addressEdittxt.text.toString()
+		val addressList: List<Address>
 
-			} catch (e: IOException) {
-				e.printStackTrace()
+		try {
+			addressList = geocoder.getFromLocationName(address, 10)
+			if (addressList.isNotEmpty()) {
+				val splitStr = addressList[0].toString().split(",")
+				viewModel.setAddressText(splitStr[0].substring(splitStr[0].indexOf("\"") + 1, splitStr[0].length - 2))
+				//viewModel.setAddressText(splitStr.toString())
+				viewModel.removeGuideText()
+			} else {
+				viewModel.setAddressText("주소를 찾을 수 없음")
 			}
 
+		} catch (e: IOException) {
+			e.printStackTrace()
 		}
 	}
 }
