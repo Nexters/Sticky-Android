@@ -62,7 +62,6 @@ class MapActivity : BaseActivity<ActivityMapBinding>(), OnMapReadyCallback, Goog
 	override fun onMapReady(googleMap: GoogleMap) {
 		mMap = googleMap
 		setDefaultLocation()
-
 		if (checkMapPermission()) {
 			startLocationUpdates()
 		} else {
@@ -87,12 +86,11 @@ class MapActivity : BaseActivity<ActivityMapBinding>(), OnMapReadyCallback, Goog
 			if (locationList.size > 0) {
 				location = locationList[locationList.size - 1]
 				currentPosition = LatLng(location.latitude, location.longitude)
-				val markerTitle: String = getCurrentAddress(currentPosition)
-
-				viewModel.setMapAddressText(getCurrentAddress(currentPosition))
+				viewModel.setAddressText("")
+				viewModel.setAddressName(getCurrentAddress(currentPosition))
 
 				//현재 위치에 마커 생성하고 이동
-				setCurrentLocation(location, markerTitle)
+				setCurrentLocation(location.latitude, location.longitude)
 			}
 		}
 	}
@@ -113,36 +111,44 @@ class MapActivity : BaseActivity<ActivityMapBinding>(), OnMapReadyCallback, Goog
 			startActivity(intent)
 			finish()
 		} else {
-			if (checkMapPermission()) {
-				mFusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper())
-				if (checkMapPermission()) mMap.isMyLocationEnabled = true
+			val intent: Intent = intent
+			if (intent.getBooleanExtra("findhere", false)) { // 주소 검색이 아닌 현재 위치 버튼 클릭으로 넘어온 경
+				if (checkMapPermission()) {
+					mFusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper())
+					if (checkMapPermission()) mMap.isMyLocationEnabled = true
+				}
+			} else {
+				setAddressDatabinding() // 현재 위치로 주소 찾기 버튼으로 넘어 온 경우가 아닐때 - 즉, 주소 검색 후 넘어온 경우
 			}
+
 		}
 	}
 
 	override fun onStart() {
 		super.onStart()
-		if (checkMapPermission()) {
-			mFusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, null)
+		if (intent.getBooleanExtra("findhere", false)) {
+			if (checkMapPermission()) {
+				mFusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, null)
+			}
 		}
 	}
 
 	override fun onStop() {
 		super.onStop()
-		mFusedLocationClient.removeLocationUpdates(locationCallback)
+		if (intent.getBooleanExtra("findhere", false)) {
+			mFusedLocationClient.removeLocationUpdates(locationCallback)
+		}
 	}
 
-	private fun setCurrentLocation(location: Location?, markerTitle: String) {
+	private fun setCurrentLocation(latitude: Double, longitude: Double) {
 		currentMarker?.remove()
-		val currentLatitueLongitude = LatLng(location!!.latitude, location.longitude)
+		val currentLatitueLongitude = LatLng(latitude, longitude)
 
 		val markerOptions = MarkerOptions().apply {
 			position(currentLatitueLongitude)
-			title(markerTitle)
 			draggable(true)
 		}
 		currentMarker = mMap.addMarker(markerOptions)
-
 		val cameraUpdate = CameraUpdateFactory.newLatLng(currentLatitueLongitude)
 		mMap.moveCamera(cameraUpdate)
 	}
@@ -154,11 +160,11 @@ class MapActivity : BaseActivity<ActivityMapBinding>(), OnMapReadyCallback, Goog
 	lateinit var markerOptions: MarkerOptions
 	override fun onMarkerDrag(markerPosition: Marker) {
 		LatitueLongitude = LatLng(markerPosition.position.latitude, markerPosition.position.longitude)
-		val markerTitle: String = getCurrentAddress(LatitueLongitude)
-		viewModel.setMapAddressText(markerTitle)
+		val mapAddressText: String = getCurrentAddress(LatitueLongitude)
+		viewModel.setAddressText("")
+		viewModel.setAddressName(mapAddressText)
 		markerOptions = MarkerOptions().apply {
 			position(markerPosition.position)
-			title(markerTitle)
 			draggable(true)
 			icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
 		}
@@ -183,7 +189,6 @@ class MapActivity : BaseActivity<ActivityMapBinding>(), OnMapReadyCallback, Goog
 				1)
 		} catch (ioException: IOException) {
 			//네트워크 문제
-			toast("지오코더 서비스 사용불가")
 			return "지오코더 서비스 사용불가"
 		} catch (illegalArgumentException: IllegalArgumentException) {
 			toast("잘못된 GPS 좌표")
@@ -209,13 +214,11 @@ class MapActivity : BaseActivity<ActivityMapBinding>(), OnMapReadyCallback, Goog
 
 	private fun setDefaultLocation() {
 		val DEFAULT_LOCATION = LatLng(37.56, 126.97)
-		val markerTitle = "위치정보 가져올 수 없음"
 
 		currentMarker?.remove()
 
 		val markerOptions = MarkerOptions().apply {
 			position(DEFAULT_LOCATION)
-			title(markerTitle)
 			draggable(true)
 			icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
 		}
@@ -240,7 +243,6 @@ class MapActivity : BaseActivity<ActivityMapBinding>(), OnMapReadyCallback, Goog
 				}
 			}
 			if (check_result) {
-
 				// 퍼미션을 허용했다면 위치 업데이트를 시작합니다.
 				startLocationUpdates()
 			} else {
@@ -289,4 +291,23 @@ class MapActivity : BaseActivity<ActivityMapBinding>(), OnMapReadyCallback, Goog
 			onBackPressed()
 		}
 	}
+
+	@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+	private fun setAddressDatabinding() { // setAddressActivity에서 넘겨준 Data 받기
+		val intent: Intent = intent
+		if (intent.hasExtra("address")) {
+			val addressData = intent.getStringExtra("address")
+			val addressNameData = intent.getStringExtra("name")
+			val addresslat = intent.getDoubleExtra("latitude", 37.56)
+			val addresslng = intent.getDoubleExtra("longtitude", 126.97)
+			viewModel.setAddressText(addressData)
+			viewModel.setAddressName(addressNameData)
+			viewModel.setAddressLatitude(addresslat)
+			viewModel.setAddressLongitude(addresslng)
+			setCurrentLocation(addresslat, addresslng)
+		} else {
+			toast("전달된 이름이 없습니다")
+		}
+	}
+
 }

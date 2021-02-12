@@ -5,23 +5,26 @@ import androidx.lifecycle.ViewModel
 
 class MapViewModel : ViewModel() {
 	val addressText = MutableLiveData<String>()
-	val mapAddressText = MutableLiveData<String>()
-	val guideText = MutableLiveData<String>()
+	val latitude = MutableLiveData<Double>()
+	val longtitude = MutableLiveData<Double>()
+
+	val buildingName = MutableLiveData<String>()
+
 
 	fun setAddressText(value: String) {
 		addressText.value = value
 	}
 
-	fun setMapAddressText(value: String) {
-		mapAddressText.value = value
+	fun setAddressLatitude(value: Double) {
+		latitude.value = value
 	}
 
-	fun removeGuideText() {
-		guideText.value = ""
+	fun setAddressLongitude(value: Double) {
+		longtitude.value = value
 	}
 
-	fun setGuideText(value: String) {
-		guideText.value = value
+	fun setAddressName(value: String) {
+		buildingName.value = value
 	}
 
 }
