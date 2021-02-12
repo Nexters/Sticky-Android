@@ -14,6 +14,7 @@
     <string name="dialog_share">공유하기</string>
     <string name="dialog_exit">종료하기</string>
     <string name="dialog_cancel">취소하기</string>
+    <string name="dialog_reset">계정 초기화하기</string>
 
     <!-- map -->
     <string name="map_set_home">집으로 설정하기</string>
@@ -35,4 +36,11 @@
     <string name="my_page_monthly_description">한달 내에 쌓은 시간을 기준으로 합니다.</string>
     <string name="my_page_continuous_title">연속 기록</string>
     <string name="my_page_continuous_description">멈추지 않고 이어서 기록된 시간을 기준으로 합니다.</string>
+
+    <string name="view_more_title">더보기</string>
+    <string name="view_more_change_home_address">주소 변경</string>
+    <string name="view_more_about_sticky">스티키에 대해서</string>
+    <string name="view_more_version_info">버전정보</string>
+    <string name="view_more_open_source_licence">오픈소스 라이센스</string>
+
 </resources>

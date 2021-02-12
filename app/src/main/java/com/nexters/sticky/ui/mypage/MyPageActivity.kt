@@ -1,11 +1,13 @@
 package com.nexters.sticky.ui.mypage
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.nexters.sticky.R
 import com.nexters.sticky.base.BaseActivity
 import com.nexters.sticky.databinding.ActivityMyPageBinding
+import com.nexters.sticky.ui.mypage.ViewMore.LEVEL
 import com.nexters.sticky.ui.mypage.adapter.MyPageAdapter
 
 class MyPageActivity : BaseActivity<ActivityMyPageBinding>() {
@@ -35,7 +37,8 @@ class MyPageActivity : BaseActivity<ActivityMyPageBinding>() {
 		}
 
 		actionBar.clickListener(R.id.btn_right) {
-			toast("show more")
+			val intent = Intent(this@MyPageActivity, ViewMoreActivity::class.java)
+			startActivity(intent)
 		}
 	}
 
@@ -58,7 +61,7 @@ class MyPageActivity : BaseActivity<ActivityMyPageBinding>() {
 
 	private fun setOnClickListener() {
 		binding.tvLevelInfo.setOnClickListener {
-			toast("show level info")
+			LEVEL.goToDetailActivity(this@MyPageActivity)
 		}
 	}
 }

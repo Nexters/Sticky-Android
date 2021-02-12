@@ -1,8 +1,10 @@
 package com.nexters.sticky.ui.dialog
 
+import android.content.Intent
 import com.nexters.sticky.R
 import com.nexters.sticky.base.BaseDialog
 import com.nexters.sticky.databinding.DialogLayoutBinding
+import com.nexters.sticky.ui.address.SetAddressActivity
 import com.nexters.sticky.ui.dialog.DialogType.CHANGE_ADDRESS
 
 class ChangeAddressDialog : BaseDialog<DialogLayoutBinding>() {
@@ -21,16 +23,20 @@ class ChangeAddressDialog : BaseDialog<DialogLayoutBinding>() {
 			binding.tvDescription.text = it.resources.getText(CHANGE_ADDRESS.descriptionRes)
 			binding.tvButtonDoAction.text = it.resources.getText(CHANGE_ADDRESS.doActionRes)
 		}
+
+		binding.tvButtonDoAction.setBackgroundResource(R.drawable.dialog_button_background_negative)
 	}
 
 	private fun setOnClickListener() {
 		binding.tvButtonDoAction.setOnClickListener {
-			toast("do something..")
-			dismiss()
+			// TODO : 정보 초기화
+
+			val intent = Intent(activity, SetAddressActivity::class.java)
+			intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+			startActivity(intent)
 		}
 
 		binding.tvButtonCancel.setOnClickListener {
-			toast("dismiss dialog")
 			dismiss()
 		}
 	}

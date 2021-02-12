@@ -32,6 +32,15 @@
                 android:name=".ui.mypage.MyPageActivity"
                 android:screenOrientation="portrait" />
         <activity
+                android:name=".ui.mypage.ViewMoreActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".ui.mypage.ViewMoreDetailActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".ui.mypage.ViewMoreVersionInfoActivity"
+                android:screenOrientation="portrait" />
+        <activity
                 android:name=".ui.SplashActivity"
                 android:screenOrientation="portrait">
             <intent-filter>
