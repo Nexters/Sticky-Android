@@ -1,6 +1,6 @@
 package com.nexters.sticky.ui.mypage.adapter
 
-import android.view.View
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.nexters.sticky.databinding.ItemMyPageBadgeBinding
 import timber.log.Timber
@@ -9,10 +9,8 @@ class MyPageItemViewHolder(val binding: ItemMyPageBadgeBinding) : RecyclerView.V
 	fun bind(item: Any, isFiltered: Boolean) {
 		if (item is MyPageBadge) {
 			binding.apply {
-				if (isFiltered) {
-					tvBadgeCount.visibility = View.VISIBLE
-					tvBadgeCount.text = if (item.badgeCount > 9) "9+" else item.badgeCount.toString()
-				}
+				tvBadgeCount.isVisible = isFiltered
+				tvBadgeCount.text = if (item.badgeCount > 9) "9+" else item.badgeCount.toString()
 
 				imgBadge.setImageResource(item.badgeImage)
 				tvBadgeName.text = item.badgeName

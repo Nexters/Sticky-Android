@@ -4,5 +4,6 @@ data class MyPageBadge(
 	val badgeImage: Int,
 	val badgeName: String,
 	val badgeCount: Int,
-	val receivedDate: String
+	val receivedDate: String,
+	val badgeType: BadgeType? = null
 )
