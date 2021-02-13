@@ -23,7 +23,7 @@ class SplashActivity : AppCompatActivity() {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_splash)
 
-		window.statusBarColor = ContextCompat.getColor(this, R.color.brand_color)
+		window.statusBarColor = ContextCompat.getColor(this, R.color.primary_purple)
 
 		lifecycleScope.launch {
 			delay(splashDelay)

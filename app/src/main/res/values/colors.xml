@@ -21,20 +21,5 @@
     <color name="dim_30">#4c000000</color>
     <color name="dim_60">#99000000</color>
 
-    <!-- 아래 항목 확인 후 지워주세요~!-->
-    <color name="purple_200">#FF654eff</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="Transparency">#00000000</color>
-    <color name="brand_color">#654eff</color>
-    <color name="brand_second_color">#A395FF</color>
-
-    <color name="stop_challenge_color">#888888</color>
-    <color name="can_not_start_tool_tip_color">#99000000</color>
-    <color name="button_disable">#cccccc</color>
-    <color name="address_input_txt_hint_color">#999999</color>
+    <color name="level1_back">#A395FF</color>
 </resources>

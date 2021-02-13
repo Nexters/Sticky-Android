@@ -16,7 +16,7 @@ class MyPageActivity : BaseActivity<ActivityMyPageBinding>() {
 
 	override val layoutRes = R.layout.activity_my_page
 	override val actionBarLayoutRes = R.layout.actionbar_my_page_layout
-	override val statusBarColorRes = R.color.white
+	override val statusBarColorRes = R.color.primary_white
 
 	override fun setUpBinding() {
 		binding.vm = viewModel

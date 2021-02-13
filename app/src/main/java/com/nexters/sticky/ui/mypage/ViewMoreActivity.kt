@@ -16,7 +16,7 @@ class ViewMoreActivity : BaseActivity<ActivityViewMoreBinding>() {
 
 	override val layoutRes = R.layout.activity_view_more
 	override val actionBarLayoutRes = R.layout.actionbar_view_more_layout
-	override val statusBarColorRes = R.color.white
+	override val statusBarColorRes = R.color.primary_white
 
 	override fun setUpBinding() {
 		binding.vm = viewModel

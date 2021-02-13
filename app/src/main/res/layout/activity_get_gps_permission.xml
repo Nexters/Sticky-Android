@@ -3,7 +3,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/brand_color">
+        android:background="@color/primary_purple">
 
     <ImageView
             android:id="@+id/img_logo"
@@ -22,7 +22,7 @@
             android:alpha="0"
             android:text="@string/splash_description"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/primary_white"
             android:textSize="16sp"
             tools:alpha="1" />
 
@@ -40,7 +40,7 @@
             android:paddingEnd="30dp"
             android:paddingBottom="14dp"
             android:text="@string/splash_set_gps_permission"
-            android:textColor="@color/white"
+            android:textColor="@color/primary_white"
             android:textSize="16sp"
             tools:alpha="1" />
 

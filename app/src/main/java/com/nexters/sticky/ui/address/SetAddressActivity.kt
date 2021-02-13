@@ -22,9 +22,9 @@ class SetAddressActivity : BaseActivity<ActivitySetAddressBinding>(), ClickListe
 
 	override val layoutRes = R.layout.activity_set_address
 	override val actionBarLayoutRes = R.layout.actionbar_setaddress_layout
-	override val statusBarColorRes = R.color.white
+	override val statusBarColorRes = R.color.primary_white
 	private lateinit var recyclerView: RecyclerView
-	private lateinit var AutocompleteAdapter: PlacesAutoCompleteAdapter
+	private lateinit var autocompleteAdapter: PlacesAutoCompleteAdapter
 
 	override fun setUpBinding() {
 		binding.vm = viewModel
@@ -40,13 +40,16 @@ class SetAddressActivity : BaseActivity<ActivitySetAddressBinding>(), ClickListe
 		if (!Places.isInitialized()) {
 			Places.initialize(applicationContext, apiKey)
 		}
-		val placesClient = Places.createClient(this)
+		//val placesClient = Places.createClient(this)
+
 		recyclerView = binding.placeRecyclerView
-		AutocompleteAdapter = PlacesAutoCompleteAdapter(this)
 		recyclerView.layoutManager = LinearLayoutManager(this)
-		AutocompleteAdapter.setClickListener(this)
-		recyclerView.adapter = AutocompleteAdapter
-		AutocompleteAdapter.notifyDataSetChanged()
+
+		autocompleteAdapter = PlacesAutoCompleteAdapter(this)
+		autocompleteAdapter.setClickListener(this)
+
+		recyclerView.adapter = autocompleteAdapter
+		autocompleteAdapter.notifyDataSetChanged()
 	}
 
 	private fun setActionBar() {
@@ -77,8 +80,8 @@ class SetAddressActivity : BaseActivity<ActivitySetAddressBinding>(), ClickListe
 
 	private val filterTextWatcher: TextWatcher = object : TextWatcher {
 		override fun afterTextChanged(s: Editable) {
-			if (s.toString() != "") {
-				AutocompleteAdapter.filter.filter(s.toString())
+			if (s.toString().isNotEmpty()) {
+				autocompleteAdapter.filter.filter(s.toString())
 				if (recyclerView.visibility == View.GONE) {
 					recyclerView.visibility = View.VISIBLE
 				}

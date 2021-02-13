@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
         android:shape="rectangle">
-    <solid android:color="@color/can_not_start_tool_tip_color" />
+    <solid android:color="@color/grayscale_gray_500" />
     <corners android:radius="48dp" />
 </shape>

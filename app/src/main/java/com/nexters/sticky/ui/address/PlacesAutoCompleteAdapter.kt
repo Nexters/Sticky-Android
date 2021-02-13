@@ -25,12 +25,9 @@ import com.nexters.sticky.R
 
 class PlacesAutoCompleteAdapter(setAddressActivity: SetAddressActivity) : RecyclerView.Adapter<PlacesAutoCompleteAdapter.PredictionHolder>(), Filterable {
 	lateinit var context: Context
-	val STYLE_BOLD: CharacterStyle = StyleSpan(Typeface.BOLD)
-	val STYLE_NORMAL: CharacterStyle = StyleSpan(Typeface.NORMAL)
 	val placesClient: PlacesClient = com.google.android.libraries.places.api.Places.createClient(setAddressActivity)
 	private lateinit var clickListener: ClickListener
 	var mResultList: ArrayList<PlaceAutocomplete> = ArrayList()
-	lateinit var place: Place
 	fun setClickListener(clickListener: ClickListener) {
 		this.clickListener = clickListener
 	}
@@ -50,7 +47,7 @@ class PlacesAutoCompleteAdapter(setAddressActivity: SetAddressActivity) : Recycl
 		val placeFields: List<Place.Field> = listOf(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG, Place.Field.ADDRESS)
 		val request = FetchPlaceRequest.builder(placeId, placeFields).build()
 		placesClient.fetchPlace(request).addOnSuccessListener { response ->
-			place = response.place
+			val place = response.place
 			predictionHolder.address.text = place.address
 			predictionHolder.area.text = place.name
 		}.addOnFailureListener { exception ->
@@ -69,13 +66,14 @@ class PlacesAutoCompleteAdapter(setAddressActivity: SetAddressActivity) : Recycl
 			override fun performFiltering(constraint: CharSequence?): FilterResults {
 				val results = FilterResults()
 				if (constraint != null) {
-					mResultList = getPredictions(constraint)!!
+					mResultList = getPredictions(constraint)
 					// The API successfully returned results.
 					results.values = mResultList
 					results.count = mResultList.size
 				}
 				return results
 			}
+
 			override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
 				if (results != null && results.count > 0) {
 					notifyDataSetChanged()
@@ -107,6 +105,8 @@ class PlacesAutoCompleteAdapter(setAddressActivity: SetAddressActivity) : Recycl
 		}
 		return if (autocompletePredictions.isSuccessful) {
 			val findAutocompletePredictionsResponse = autocompletePredictions.result
+			val STYLE_BOLD: CharacterStyle = StyleSpan(Typeface.BOLD)
+			val STYLE_NORMAL: CharacterStyle = StyleSpan(Typeface.NORMAL)
 			if (findAutocompletePredictionsResponse != null) for (prediction in findAutocompletePredictionsResponse.autocompletePredictions) {
 				resultList.add(PlaceAutocomplete(prediction.placeId, prediction.getPrimaryText(STYLE_NORMAL).toString(), prediction.getFullText(STYLE_BOLD).toString()))
 			}
@@ -134,7 +134,7 @@ class PlacesAutoCompleteAdapter(setAddressActivity: SetAddressActivity) : Recycl
 				val placeFields: List<Place.Field> = listOf(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG, Place.Field.ADDRESS)
 				val request = FetchPlaceRequest.builder(placeId, placeFields).build()
 				placesClient.fetchPlace(request).addOnSuccessListener { response ->
-					place = response.place
+					val place = response.place
 					clickListener.click(place)
 				}.addOnFailureListener { exception ->
 					if (exception is ApiException) {

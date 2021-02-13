@@ -26,7 +26,7 @@ class NeedPermissionActivity : AppCompatActivity() {
 		binding = ActivityGetGpsPermissionBinding.inflate(layoutInflater)
 		setContentView(binding.root)
 
-		window.statusBarColor = ContextCompat.getColor(this, R.color.brand_color)
+		window.statusBarColor = ContextCompat.getColor(this, R.color.primary_purple)
 
 		setAnimation()
 
