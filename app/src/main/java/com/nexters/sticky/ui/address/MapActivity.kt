@@ -279,6 +279,7 @@ class MapActivity : BaseActivity<ActivityMapBinding>(), OnMapReadyCallback, Goog
 	private fun setOnClickListener() {
 		binding.setHomeBtn.setOnClickListener {
 			val intent = Intent(this@MapActivity, MainActivity::class.java)
+			intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 			startActivity(intent)
 		}
 		binding.resetAddressTxt.setOnClickListener {

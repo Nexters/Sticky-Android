@@ -32,4 +32,23 @@
     <string name="address_tip_txt">Tip</string>
     <string name="address_no_search_result_txt">검색 결과가 없습니다. \n 지번, 도로, 건물명을 입력해주세요.</string>
     <string name="address_warn_txt">이후에 주소를 수정하면 모든 기록이 초기화됩니다.</string>
+
+    <!-- my page -->
+    <string name="my_page_level_info"><u>등급정보</u></string>
+    <string name="my_page_next_level_remaining">다음 레벨까지 %1$d 남았습니다</string>
+
+    <string name="my_page_title">마이페이지</string>
+    <string name="my_page_special_title">스페셜 기록</string>
+    <string name="my_page_special_description">특별한 기록을 달성하면 받을 수 있어요</string>
+    <string name="my_page_monthly_title">월간 기록</string>
+    <string name="my_page_monthly_description">한달 내에 쌓은 시간을 기준으로 합니다.</string>
+    <string name="my_page_continuous_title">연속 기록</string>
+    <string name="my_page_continuous_description">멈추지 않고 이어서 기록된 시간을 기준으로 합니다.</string>
+
+    <string name="view_more_title">더보기</string>
+    <string name="view_more_change_home_address">주소 변경</string>
+    <string name="view_more_about_sticky">스티키에 대해서</string>
+    <string name="view_more_version_info">버전정보</string>
+    <string name="view_more_open_source_licence">오픈소스 라이센스</string>
+
 </resources>

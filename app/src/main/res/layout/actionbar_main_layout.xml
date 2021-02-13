@@ -4,11 +4,10 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/actionbar_layout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/toolbar_height"
-        android:background="@color/purple_500">
+        android:layout_height="@dimen/toolbar_height">
 
     <ImageView
-            android:id="@+id/btn_my_page"
+            android:id="@+id/btn_left"
             android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_launcher_foreground"
@@ -17,18 +16,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:visibility="visible" />
-
-    <ImageView
-            android:id="@+id/img_heart"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_launcher_foreground"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/tv_title"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
             android:id="@+id/tv_title"
@@ -39,13 +26,12 @@
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/img_heart"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="3"
             tools:visibility="visible" />
 
     <ImageView
-            android:id="@+id/btn_close_button"
+            android:id="@+id/btn_right"
             android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_launcher_foreground"
