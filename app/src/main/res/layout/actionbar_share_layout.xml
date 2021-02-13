@@ -5,13 +5,13 @@
         android:id="@+id/actionbar_layout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbar_height"
-        android:background="@color/brand_color">
+        android:background="@color/purple_700">
 
     <ImageView
             android:id="@+id/back_main_btn"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/icon_back"
+            android:src="@drawable/icon_close"
             android:visibility="gone"
             android:layout_marginStart="12dp"
             app:layout_constraintBottom_toBottomOf="parent"

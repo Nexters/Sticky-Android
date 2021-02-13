@@ -32,4 +32,7 @@
     <string name="address_tip_txt">Tip</string>
     <string name="address_no_search_result_txt">검색 결과가 없습니다. \n 지번, 도로, 건물명을 입력해주세요.</string>
     <string name="address_warn_txt">이후에 주소를 수정하면 모든 기록이 초기화됩니다.</string>
+    <string name="share_descript_txt1">나의 </string>
+    <string name="share_descript_txt2">을 공유합니다 </string>
+
 </resources>

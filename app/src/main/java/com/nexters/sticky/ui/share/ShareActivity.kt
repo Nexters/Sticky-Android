@@ -20,7 +20,7 @@ class ShareActivity : BaseActivity<ActivityShareBinding>() {
 
 	override val layoutRes = R.layout.activity_share
 	override val actionBarLayoutRes = R.layout.actionbar_share_layout
-	override val statusBarColorRes = R.color.purple_200
+	override val statusBarColorRes = R.color.purple_700
 
 	override fun setUpBinding() {
 		binding.vm = viewModel
@@ -47,7 +47,7 @@ class ShareActivity : BaseActivity<ActivityShareBinding>() {
 	}
 
 	fun setMediator() {
-		val tabLayoutTextArray = arrayOf("현재 기록", "누적 기록", "최근 뱃지")
+		val tabLayoutTextArray = arrayOf("현재 기록", "최근 뱃지")
 
 		TabLayoutMediator(binding.shareTabLayout, binding.shareViewPager) { tab, position ->
 			tab.text = tabLayoutTextArray[position]

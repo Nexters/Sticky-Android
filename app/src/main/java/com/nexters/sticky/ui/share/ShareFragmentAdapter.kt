@@ -7,13 +7,12 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 class ShareFragmentAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
 
 	override fun getItemCount(): Int {
-		return 3
+		return 2
 	}
 
 	override fun createFragment(position: Int): Fragment {
 		return when (position) {
 			0 -> ShareRecordFragment()
-			1 -> ShareAccumFragment()
 			else -> ShareBadgeFragment()
 		}
 	}
