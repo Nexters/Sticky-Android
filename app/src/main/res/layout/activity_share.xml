@@ -12,13 +12,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/brand_color">
+            android:background="@color/primary_purple">
 
         <com.google.android.material.tabs.TabLayout
                 android:id="@+id/share_tabLayout"
                 android:layout_width="0dp"
                 android:layout_height="20dp"
-                app:tabIndicatorColor="@color/brand_color"
+                app:tabIndicatorColor="@color/primary_purple"
                 app:tabTextAppearance="@style/tab_text"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +61,7 @@
                     android:id="@+id/share_txt1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
+                    android:textColor="@color/primary_white"
                     android:textSize="16sp"
                     android:text="나의 " />
 
@@ -69,7 +69,7 @@
                     android:id="@+id/share_content_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
+                    android:textColor="@color/primary_white"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:layout_marginStart="0dp"
@@ -80,7 +80,7 @@
                     android:id="@+id/share_txt2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
+                    android:textColor="@color/primary_white"
                     android:textSize="16sp"
                     android:text="을 공유합니다" />
         </LinearLayout>
@@ -108,7 +108,7 @@
                 android:layout_marginBottom="40dp"
                 android:layout_marginTop="36dp"
                 android:background="@drawable/share_button_background_radius16"
-                android:src="@drawable/icon_share" />
+                android:src="@drawable/ic_icon_share" />
 
         <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/twitter_share_btn"
@@ -121,7 +121,7 @@
                 android:layout_marginEnd="60dp"
                 android:layout_marginBottom="40dp"
                 android:layout_marginTop="36dp"
-                android:src="@drawable/icon_share"
+                android:src="@drawable/ic_icon_share"
                 android:background="@drawable/share_button_background_radius16" />
 
 

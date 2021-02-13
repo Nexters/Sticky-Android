@@ -14,7 +14,7 @@
             android:layout_marginTop="20dp"
             android:text="전체보기"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/primary_white"
             android:textSize="14sp"
             tools:text="전체보기" />
 

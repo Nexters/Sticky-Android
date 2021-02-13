@@ -22,7 +22,7 @@ class ViewMoreDetailActivity : AppCompatActivity() {
 		baseBinding = BaseToolbarLayoutBinding.inflate(layoutInflater)
 		setContentView(baseBinding.root)
 
-		window.statusBarColor = ContextCompat.getColor(this@ViewMoreDetailActivity, R.color.white)
+		window.statusBarColor = ContextCompat.getColor(this@ViewMoreDetailActivity, R.color.primary_white)
 
 		setActionBar()
 		setContainerView()
@@ -40,7 +40,7 @@ class ViewMoreDetailActivity : AppCompatActivity() {
 				this@ViewMoreDetailActivity,
 				R.layout.actionbar_view_more_layout
 			)
-			setLayoutBackgroundColor(R.color.white)
+			setLayoutBackgroundColor(R.color.primary_white)
 			setText(R.id.tv_title, getString(intent.getIntExtra(titleResId, R.string.view_more_about_sticky)))
 			clickListener(R.id.btn_left) {
 				finish()
