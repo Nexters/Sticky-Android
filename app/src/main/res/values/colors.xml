@@ -36,5 +36,4 @@
     <color name="stop_challenge_color">#888888</color>
     <color name="can_not_start_tool_tip_color">#99000000</color>
     <color name="button_disable">#cccccc</color>
-    <color name="address_input_txt_hint_color">#999999</color>
 </resources>

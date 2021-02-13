@@ -5,7 +5,7 @@
         android:id="@+id/actionbar_layout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbar_height"
-        android:background="@color/brand_color">
+        android:background="@color/white">
 
     <ImageView
             android:id="@+id/back_main_btn"

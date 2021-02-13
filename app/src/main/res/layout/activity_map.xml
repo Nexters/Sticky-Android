@@ -14,17 +14,17 @@
             android:id="@+id/map_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/brand_color">
+            android:background="@color/white">
 
         <fragment
                 android:id="@+id/map_fragment"
                 android:name="com.google.android.gms.maps.SupportMapFragment"
-                android:layout_width="280dp"
-                android:layout_height="210dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginBottom="30dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="24dp"
                 app:layout_constraintBottom_toTopOf="@id/address_text_Linear"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -33,32 +33,53 @@
 
         <LinearLayout
                 android:id="@+id/address_text_Linear"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="85dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="48dp"
                 android:gravity="center"
                 android:orientation="vertical"
-                app:layout_constraintBottom_toTopOf="@id/set_home_btn"
+                app:layout_constraintBottom_toTopOf="@id/warn_txt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/map_fragment">
 
             <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/address_txt1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{vm.addressText}"
-                    android:textColor="@color/white"
-                    android:textSize="24sp" />
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:text="@{vm.buildingName}"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/detaile_address_txt"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/address_txt2"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="0dp"
-                    android:text="@{vm.mapAddressText}"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:gravity="center"
+                    android:text="@{vm.addressText}"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
         </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/warn_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/address_warn_txt"
+                android:textColor="@color/grayscale_gray_500"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@id/set_home_btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/set_home_btn"
@@ -66,34 +87,29 @@
                 android:layout_height="60dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="46dp"
-                android:layout_marginEnd="40dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="16dp"
                 android:background="@drawable/map_button_backgound"
                 android:text="@string/map_set_home"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@id/reset_address_txt"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/address_text_Linear" />
+                app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/reset_address_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="0dp"
                 android:layout_marginBottom="30dp"
                 android:text="@string/map_reset_address"
-                android:textColor="@color/white"
+                android:textColor="@color/brand_color"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/set_home_btn" />
+                app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

@@ -21,9 +21,18 @@
     <string name="map_reset_address"><u>여기가 아닌가요?</u></string>
 
     <!-- address -->
-    <string name="address_main_txt">집 주소를 입력해주세요</string>
+    <string name="address_main_txt">주소를 입력해주세요</string>
     <string name="address_input_txt_hint">도로명, 건물명 또는 지번으로 검색</string>
     <string name="address_find_txt">현재 위치로 주소 찾기</string>
+    <string name="address_guide_txt1">- 도로명 + 건물번호 </string>
+    <string name="address_guide_txt2"> (예 : 강남대로 570)</string>
+    <string name="address_guide_txt3">- 동/읍/면/리 + 번지 </string>
+    <string name="address_guide_txt4"> (예 : 신천동 42)</string>
+    <string name="address_guide_txt5">- 건물명, 아파트명 </string>
+    <string name="address_guide_txt6"> (예 : 반포자이아파트)</string>
+    <string name="address_tip_txt">Tip</string>
+    <string name="address_no_search_result_txt">검색 결과가 없습니다. \n 지번, 도로, 건물명을 입력해주세요.</string>
+    <string name="address_warn_txt">이후에 주소를 수정하면 모든 기록이 초기화됩니다.</string>
 
     <!-- my page -->
     <string name="my_page_level_info"><u>등급정보</u></string>
