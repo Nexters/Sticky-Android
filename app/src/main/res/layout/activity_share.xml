@@ -12,11 +12,15 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/purple_700">
+            android:background="@color/primary_purple">
 
         <com.google.android.material.tabs.TabLayout
                 android:id="@+id/share_tabLayout"
                 android:layout_width="0dp"
+                android:layout_height="20dp"
+                app:tabIndicatorColor="@color/primary_purple"
+                app:tabTextAppearance="@style/tab_text"
+                app:layout_constraintStart_toStartOf="parent"
                 android:layout_height="24dp"
                 android:layout_marginStart="48dp"
                 android:layout_marginTop="30dp"
@@ -62,9 +66,9 @@
                     android:id="@+id/share_txt1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/share_descript_txt1"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textColor="@color/primary_white"
+                    android:textSize="16sp"
+                    android:text="나의 " />
 
             <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/share_content_txt"
