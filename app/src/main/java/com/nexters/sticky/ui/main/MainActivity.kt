@@ -18,11 +18,9 @@ import com.nexters.sticky.ui.dialog.ExitChallengeDialog
 import com.nexters.sticky.ui.main.MainViewModel.CHALLENGE
 import com.nexters.sticky.ui.main.adapter.MainAdapter
 import com.nexters.sticky.ui.main.adapter.MainItemDecorator
+import com.nexters.sticky.ui.mypage.MyPageActivity
 import com.nexters.sticky.ui.share.ShareActivity
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
@@ -60,8 +58,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 	}
 
 	private fun setOnClickListener() {
-		actionBar.clickListener(R.id.btn_my_page) {
-			toast("go to my page")
+		actionBar.clickListener(R.id.btn_left) {
+			val intent = Intent(this@MainActivity, MyPageActivity::class.java)
+			startActivity(intent)
 		}
 
 		binding.btnStartShareChallenge.setOnClickListener {
@@ -116,8 +115,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 	}
 
 	private fun setStopActionBarView() {
-		actionBar.setIsVisible(R.id.img_heart)
-		actionBar.setIsVisible(R.id.btn_close_button)
+		actionBar.setIsVisible(R.id.btn_right)
 		actionBar.setText(R.id.tv_title, "외출중입니다")
 
 		actionBar.setLayoutBackgroundColor(R.color.stop_challenge_color)
@@ -138,12 +136,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 	}
 
 	private fun startActionBarView() {
-		actionBar.clickListener(R.id.btn_close_button) {
+		actionBar.clickListener(R.id.btn_right) {
 			ExitChallengeDialog().show(supportFragmentManager, "")
 		}
-
-		actionBar.setIsVisible(R.id.img_heart)
-		actionBar.setText(R.id.tv_title, "3")
 
 		actionBar.setLayoutBackgroundColor(R.color.brand_color)
 		window.statusBarColor = ContextCompat.getColor(this, R.color.brand_color)
