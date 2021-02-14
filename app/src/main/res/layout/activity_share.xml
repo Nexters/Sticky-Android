@@ -12,45 +12,42 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/primary_purple">
+            android:background="@color/level1_back">
 
         <com.google.android.material.tabs.TabLayout
                 android:id="@+id/share_tabLayout"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
-                app:tabIndicatorColor="@color/primary_purple"
-                app:tabTextAppearance="@style/tab_text"
-                app:layout_constraintStart_toStartOf="parent"
                 android:layout_height="24dp"
-                android:layout_marginStart="48dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="48dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/capture_layout"
+                app:layout_constraintStart_toStartOf="@id/capture_layout"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tabIndicatorColor="@color/purple_700"
-                app:tabTextAppearance="@style/tab_text" />
+                app:tabGravity="center"
+                app:tabIndicatorColor="@color/level1_back"
+                app:tabSelectedTextColor="@color/primary_black"
+                app:tabTextAppearance="@style/tab_text"
+                app:tabTextColor="@color/dim_30" />
 
         <androidx.cardview.widget.CardView
                 android:id="@+id/capture_layout"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginStart="48dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="48dp"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/share_fragment_background"
-                app:cardCornerRadius="40dp"
+                android:clipToPadding="false"
+                android:clipChildren="false"
                 app:layout_constraintBottom_toTopOf="@+id/share_text_Linear"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/share_tabLayout">
+                app:layout_constraintTop_toBottomOf="@id/share_tabLayout"
+                android:background="@color/transparent">
 
             <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/share_viewPager"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/share_fragment_background" />
+                    android:background="@color/level1_back"
+                     />
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
@@ -66,16 +63,17 @@
                     android:id="@+id/share_txt1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/primary_white"
-                    android:textSize="16sp"
-                    android:text="나의 " />
+                    android:text="@string/share_descript_txt1"
+                    android:textColor="@color/primary_black"
+                    android:textSize="16sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/share_content_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
                     android:text="@{vm.text}"
-                    android:textColor="@color/black"
+                    android:textColor="@color/primary_black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
@@ -84,7 +82,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/share_descript_txt2"
-                    android:textColor="@color/black"
+                    android:textColor="@color/primary_black"
                     android:textSize="14sp" />
         </LinearLayout>
 
@@ -105,7 +103,7 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/share_button_background_radius16"
-                    android:src="@drawable/icon_share" />
+                    android:src="@drawable/ic_icon_share" />
 
             <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/instagram_share_btn"
@@ -120,7 +118,7 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/share_button_background_radius16"
-                    android:src="@drawable/icon_share" />
+                    android:src="@drawable/ic_icon_share" />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

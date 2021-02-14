@@ -6,6 +6,8 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.content.FileProvider
+import androidx.core.view.ViewCompat
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.nexters.sticky.R
 import com.nexters.sticky.base.BaseActivity
@@ -13,6 +15,7 @@ import com.nexters.sticky.databinding.ActivityShareBinding
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import java.io.FileOutputStream
+
 
 @AndroidEntryPoint
 class ShareActivity : BaseActivity<ActivityShareBinding>() {
@@ -30,11 +33,38 @@ class ShareActivity : BaseActivity<ActivityShareBinding>() {
 		super.onCreate(savedInstanceState)
 
 		binding.shareViewPager.adapter = ShareFragmentAdapter(this)
+
+//		val pageMarginPx = resources.getDimensionPixelOffset(R.dimen.toolbar_height)
+//		val pagerWidth = resources.getDimensionPixelOffset(R.dimen.pagewidth)
+//		val screenWidth = resources.displayMetrics.widthPixels
+//		val offsetPx = screenWidth - pageMarginPx - pagerWidth
+
+		binding.shareViewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+		binding.shareViewPager.offscreenPageLimit = 2
+
+		val pageMargin = resources.getDimensionPixelOffset(R.dimen.pageMargin).toFloat()
+		val pageOffset = resources.getDimensionPixelOffset(R.dimen.offset).toFloat()
+
+		binding.shareViewPager.setPageTransformer{ page, position ->
+			val myOffset = position * -(2 * pageOffset + pageMargin)
+			if (binding.shareViewPager.orientation == ViewPager2.ORIENTATION_HORIZONTAL) {
+				if (ViewCompat.getLayoutDirection(binding.shareViewPager) == ViewCompat.LAYOUT_DIRECTION_RTL) {
+					page.translationX = -myOffset
+				} else {
+					page.translationX = myOffset
+				}
+			} else {
+				page.translationY = myOffset
+			}
+		}
+
 		viewModel.setText("현재 기록")
 		setActionBar()
 		setMediator()
 		setOnClickListener()
 	}
+
+
 
 	private fun setActionBar() {
 		actionBar.clickListener(R.id.back_main_btn) {
@@ -47,7 +77,7 @@ class ShareActivity : BaseActivity<ActivityShareBinding>() {
 	}
 
 	fun setMediator() {
-		val tabLayoutTextArray = arrayOf("현재 기록", "누적 기록", "최근 뱃지")
+		val tabLayoutTextArray = arrayOf("현재 기록", "최근 뱃지")
 
 		TabLayoutMediator(binding.shareTabLayout, binding.shareViewPager) { tab, position ->
 			tab.text = tabLayoutTextArray[position]
@@ -58,11 +88,9 @@ class ShareActivity : BaseActivity<ActivityShareBinding>() {
 	private fun setOnClickListener() {
 		binding.shareBtn.setOnClickListener {
 			setShareImage()
-			//getCaptureScreen()
 		}
 		binding.instagramShareBtn.setOnClickListener {
 			instagramShare()
-			//getCaptureScreen()
 		}
 	}
 

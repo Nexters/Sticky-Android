@@ -51,7 +51,8 @@
     <string name="view_more_version_info">버전정보</string>
     <string name="view_more_open_source_licence">오픈소스 라이센스</string>
 
-    <string name="share_descript_txt1">나의 </string>
+    <!-- share page -->
+    <string name="share_descript_txt1">나의</string>
     <string name="share_descript_txt2">을 공유합니다 </string>
 
 </resources>

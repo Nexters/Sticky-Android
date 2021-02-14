@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -12,9 +13,15 @@
     <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/sharebackground_level01"
-            tools:context=".ui.share.ShareRecordFragment">
 
+            tools:context=".ui.share.ShareBadgeFragment">
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginLeft="@dimen/pageMarginAndOffset"
+                android:layout_marginRight="@dimen/pageMarginAndOffset"
+                android:layout_height="match_parent"
+                android:background="@drawable/sharebackground_level01"
+                android:orientation="vertical">
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -22,51 +29,38 @@
             <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
                     android:layout_marginTop="64dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
+
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="34"
+                        android:textColor="@color/primary_white"
                         android:textSize="80sp"
-                        android:textColor="@color/white"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="24dp"
                         android:layout_marginTop="8dp"
                         android:text="분"
-                        android:textStyle="bold"
-                        android:textColor="@color/white"
+                        android:textColor="@color/primary_white"
                         android:textSize="17sp"
+                        android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                    android:id="@+id/badge_txt2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textSize="32sp"
-                    android:layout_marginStart="20dp"
-                    android:text="동안 \n안나갔다. " />
-
-            <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="27dp"
-                    android:src="@drawable/ic_image_logo"
-                    android:layout_marginStart="90dp"
-                    android:layout_marginTop="30dp" />
-        </LinearLayout>
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
+        </RelativeLayout>
     </FrameLayout>
 </layout>
