@@ -20,7 +20,7 @@ class ShareActivity : BaseActivity<ActivityShareBinding>() {
 
 	override val layoutRes = R.layout.activity_share
 	override val actionBarLayoutRes = R.layout.actionbar_share_layout
-	override val statusBarColorRes = R.color.purple_200
+	override val statusBarColorRes = R.color.level1_back
 
 	override fun setUpBinding() {
 		binding.vm = viewModel
