@@ -1,13 +1,16 @@
 package com.nexters.sticky.ui.main.adapter
 
+import android.content.Context
+import android.content.Intent
 import androidx.recyclerview.widget.RecyclerView
 import com.nexters.sticky.databinding.ItemMainBadgeShowAllBinding
-import timber.log.Timber
+import com.nexters.sticky.ui.mypage.MyPageActivity
 
-class MainShowAllViewHolder(val binding: ItemMainBadgeShowAllBinding) : RecyclerView.ViewHolder(binding.root) {
+class MainShowAllViewHolder(val binding: ItemMainBadgeShowAllBinding, val context: Context) : RecyclerView.ViewHolder(binding.root) {
 	fun bind() {
 		binding.root.setOnClickListener {
-			Timber.d("show all badges")
+			val intent = Intent(context, MyPageActivity::class.java)
+			context.startActivity(intent)
 		}
 	}
 }

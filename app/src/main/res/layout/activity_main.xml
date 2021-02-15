@@ -8,12 +8,14 @@
         <variable
                 name="vm"
                 type="com.nexters.sticky.ui.main.MainViewModel" />
+
+        <import type="androidx.core.content.ContextCompat" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/main_disable_background">
+            android:background="@{context.resources.getColor(vm.backgroundColor)}">
 
         <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline_begin"
@@ -133,11 +135,13 @@
                 app:layout_goneMarginBottom="0dp">
 
             <ImageView
+                    android:id="@+id/img_start_share"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_icon_share_white" />
 
             <TextView
+                    android:id="@+id/tv_start_share"
                     style="@style/Text.Headline2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -22,7 +22,7 @@ class MainAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 		val showAllBinding = ItemMainBadgeShowAllBinding.inflate(LayoutInflater.from(parent.context))
 		return when (viewType) {
 			TYPE.BADGE.ordinal -> MainViewHolder(mainBinding)
-			else -> MainShowAllViewHolder(showAllBinding)
+			else -> MainShowAllViewHolder(showAllBinding, parent.context)
 		}
 	}
 
