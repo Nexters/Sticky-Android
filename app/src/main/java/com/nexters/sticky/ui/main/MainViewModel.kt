@@ -17,13 +17,13 @@ class MainViewModel @ViewModelInject constructor(private val sampleRepository: S
 
 	val challengeStatus = MutableLiveData(CHALLENGE.STOP)
 
-	val day = MutableLiveData("0일")
+	val day = MutableLiveData("0 day")
 	val hour = MutableLiveData("00")
 	val minute = MutableLiveData("00")
 	val second = MutableLiveData("00")
 
 	private val format = "%02d"
-	private val formatDay = "%d일"
+	private val formatDay = "%d day"
 	private val base60 = 60
 	private val base24 = 24
 	private val durationTimeMillis = 1000L
@@ -61,7 +61,7 @@ class MainViewModel @ViewModelInject constructor(private val sampleRepository: S
 	}
 
 	private fun resetTimerText() {
-		day.value = "0일"
+		day.value = "0 day"
 		hour.value = "00"
 		minute.value = "00"
 		second.value = "00"

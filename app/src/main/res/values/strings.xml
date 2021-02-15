@@ -6,6 +6,7 @@
 
     <!-- main -->
     <string name="main_can_not_start_challenge">집에서만 시작할 수 있어요</string>
+    <string name="main_show_more">더보기</string>
     <string name="main_start">시작하기</string>
     <string name="main_share">공유하기</string>
     <string name="main_go_out">외출하기</string>

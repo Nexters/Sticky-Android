@@ -4,56 +4,43 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/item_main_badge_background"
-        android:minWidth="252dp"
-        android:minHeight="74dp">
+        android:background="@drawable/box_radius_small_item_main_badge"
+        android:minWidth="172dp"
+        android:minHeight="60dp">
 
     <ImageView
             android:id="@+id/img_badge"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="16dp"
-            android:src="@drawable/ic_launcher_foreground"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="8dp"
+            android:src="@mipmap/monthly_badge_monthly_10_locked"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-            android:id="@+id/tv_remaining_time"
+            android:id="@+id/tv_badge"
+            style="@style/Text.Headline2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:textColor="@color/primary_white"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toTopOf="@id/tv_aim"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/primary_black"
             app:layout_constraintStart_toEndOf="@id/img_badge"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed"
-            tools:text="2시간 뒤면 받아요" />
+            tools:text="1 hour" />
 
     <TextView
-            android:id="@+id/tv_aim"
+            android:id="@+id/tv_remaining_time"
+            style="@style/Text.Body2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:textColor="@color/primary_white"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toTopOf="@id/progress_bar"
+            android:layout_marginStart="8dp"
+            android:paddingTop="1dp"
+            android:textColor="@color/primary_black"
+            app:layout_constraintBottom_toBottomOf="@id/img_badge"
             app:layout_constraintStart_toEndOf="@id/img_badge"
-            app:layout_constraintTop_toBottomOf="@id/tv_remaining_time"
-            tools:text="100시간" />
-
-    <ProgressBar
-            android:id="@+id/progress_bar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="20dp"
-            android:progress="100"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/img_badge"
-            app:layout_constraintTop_toBottomOf="@id/tv_aim" />
+            app:layout_constraintTop_toBottomOf="@id/tv_badge"
+            tools:text="23분 남음" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

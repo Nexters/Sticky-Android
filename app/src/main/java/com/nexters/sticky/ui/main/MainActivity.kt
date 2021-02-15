@@ -8,7 +8,6 @@ import android.view.View
 import android.view.animation.*
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nexters.sticky.R
@@ -63,19 +62,22 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 			startActivity(intent)
 		}
 
-		binding.btnStartShareChallenge.setOnClickListener {
-			when (viewModel.challengeStatus.value) {
-				CHALLENGE.STOP -> viewModel.setChallengeStatus(CHALLENGE.START)
-				else -> goToShareActivity()
-			}
-		}
+		actionBar.setImage(R.id.btn_left, R.drawable.ic_icon_menu)
 
-		binding.btnPauseChallenge.setOnClickListener {
-//			viewModel.setChallengeStatus(CHALLENGE.PAUSE)
-			if (viewModel.challengeStatus.value != CHALLENGE.STOP) {
-				viewModel.setChallengeStatus(CHALLENGE.STOP)
-			}
-		}
+
+//		binding.btnCanNotStartChallenge.setOnClickListener {
+//			when (viewModel.challengeStatus.value) {
+//				CHALLENGE.STOP -> viewModel.setChallengeStatus(CHALLENGE.START)
+//				else -> goToShareActivity()
+//			}
+//		}
+
+//		binding.btnPauseChallenge.setOnClickListener {
+////			viewModel.setChallengeStatus(CHALLENGE.PAUSE)
+//			if (viewModel.challengeStatus.value != CHALLENGE.STOP) {
+//				viewModel.setChallengeStatus(CHALLENGE.STOP)
+//			}
+//		}
 	}
 
 	private fun goToShareActivity() {
@@ -102,12 +104,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 	private fun setStopView() {
 		stopButtonAnimation()
 		setStopActionBarView()
-		binding.tvCanNotStartChallenge.isVisible = viewModel.challengeStatus.value == CHALLENGE.STOP
+//		binding.tvCanNotStartChallenge.isVisible = viewModel.challengeStatus.value == CHALLENGE.STOP
 	}
 
 	private fun stopButtonAnimation() {
-		moveHorizontally(binding.btnStartShareChallenge, 0F)
-		moveHorizontally(binding.btnPauseChallenge, 0F)
+//		moveHorizontally(binding.btnStartShareChallenge, 0F)
+//		moveHorizontally(binding.btnPauseChallenge, 0F)
 //		GlobalScope.launch {
 //			delay(animationDuration)
 //			binding.btnStartShareChallenge.setBackgroundResource(R.drawable.main_button_background_disable)
@@ -115,8 +117,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 	}
 
 	private fun setStopActionBarView() {
-		actionBar.setIsVisible(R.id.btn_right)
-		actionBar.setText(R.id.tv_title, "외출중입니다")
+//		actionBar.setIsVisible(R.id.btn_right)
 
 		actionBar.setLayoutBackgroundColor(R.color.grayscale_gray_500)
 		window.statusBarColor = ContextCompat.getColor(this, R.color.grayscale_gray_500)
@@ -126,13 +127,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 	private fun setStartView() {
 		startButtonAnimation()
 		startActionBarView()
-		binding.tvCanNotStartChallenge.isVisible = viewModel.challengeStatus.value == CHALLENGE.STOP
+//		binding.tvCanNotStartChallenge.isVisible = viewModel.challengeStatus.value == CHALLENGE.STOP
 	}
 
 	private fun startButtonAnimation() {
-		binding.btnStartShareChallenge.setBackgroundResource(R.drawable.main_button_background_black)
-		moveHorizontally(binding.btnStartShareChallenge, 80F)
-		moveHorizontally(binding.btnPauseChallenge, -80F)
+//		binding.btnStartShareChallenge.setBackgroundResource(R.drawable.main_button_background_black)
+//		moveHorizontally(binding.btnStartShareChallenge, 80F)
+//		moveHorizontally(binding.btnPauseChallenge, -80F)
 	}
 
 	private fun startActionBarView() {
