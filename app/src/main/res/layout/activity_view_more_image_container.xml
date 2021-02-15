@@ -8,12 +8,17 @@
     <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/primary_black" />
+            android:background="@color/grayscale_gray_200" />
 
-    <ImageView
-            android:id="@+id/img"
+    <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_launcher_background" />
+            android:layout_height="match_parent">
 
+        <ImageView
+                android:id="@+id/img"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_launcher_background" />
+    </ScrollView>
 </LinearLayout>

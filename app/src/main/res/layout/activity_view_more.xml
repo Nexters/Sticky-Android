@@ -17,7 +17,7 @@
         <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/primary_black" />
+                android:background="@color/grayscale_gray_200" />
 
         <RelativeLayout
                 android:id="@+id/change_home_address_layout"
@@ -27,6 +27,7 @@
                 android:layout_marginEnd="16dp">
 
             <TextView
+                    style="@style/Text.Body1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -37,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_icon_search" />
+                    android:src="@drawable/ic_icon_arrow_right_dim" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -48,6 +49,7 @@
                 android:layout_marginEnd="16dp">
 
             <TextView
+                    style="@style/Text.Body1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -58,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_icon_search" />
+                    android:src="@drawable/ic_icon_arrow_right_dim" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -69,6 +71,7 @@
                 android:layout_marginEnd="16dp">
 
             <TextView
+                    style="@style/Text.Body1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -79,7 +82,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_icon_search" />
+                    android:src="@drawable/ic_icon_arrow_right_dim" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -90,6 +93,7 @@
                 android:layout_marginEnd="16dp">
 
             <TextView
+                    style="@style/Text.Body1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -100,7 +104,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_icon_search" />
+                    android:src="@drawable/ic_icon_arrow_right_dim" />
         </RelativeLayout>
     </LinearLayout>
 </layout>
