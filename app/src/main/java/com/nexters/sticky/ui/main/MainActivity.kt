@@ -1,13 +1,10 @@
 package com.nexters.sticky.ui.main
 
-import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
-import android.util.TypedValue
 import android.view.View
 import android.view.animation.*
 import androidx.activity.viewModels
-import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +12,7 @@ import com.nexters.sticky.R
 import com.nexters.sticky.base.BaseActivity
 import com.nexters.sticky.databinding.ActivityMainBinding
 import com.nexters.sticky.ui.dialog.ExitChallengeDialog
+import com.nexters.sticky.ui.main.MainViewModel.BACKGROUND
 import com.nexters.sticky.ui.main.MainViewModel.CHALLENGE
 import com.nexters.sticky.ui.main.adapter.MainAdapter
 import com.nexters.sticky.ui.main.adapter.MainItemDecorator
@@ -34,9 +32,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 		binding.vm = viewModel
 	}
 
-	private val animationDuration = 1000L
-	private val animationTranslationX = "translationX"
-
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
@@ -46,6 +41,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 	}
 
 	private fun initView() {
+		actionBar.setImage(R.id.btn_left, R.drawable.ic_icon_menu)
 		setRecyclerView()
 	}
 
@@ -63,17 +59,23 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 			startActivity(intent)
 		}
 
-		binding.btnStartShareChallenge.setOnClickListener {
-			when (viewModel.challengeStatus.value) {
-				CHALLENGE.STOP -> viewModel.setChallengeStatus(CHALLENGE.START)
-				else -> goToShareActivity()
+		binding.apply {
+			tvDay.setOnClickListener { // START / STOP 전환 잘 되는지 테스트 용
+				if (viewModel.isChallengeStarted()) viewModel.setChallengeStatus(CHALLENGE.STOP)
+				else viewModel.setChallengeStatus(CHALLENGE.START)
 			}
-		}
 
-		binding.btnPauseChallenge.setOnClickListener {
-//			viewModel.setChallengeStatus(CHALLENGE.PAUSE)
-			if (viewModel.challengeStatus.value != CHALLENGE.STOP) {
-				viewModel.setChallengeStatus(CHALLENGE.STOP)
+			layoutStartShareChallenge.setOnClickListener {
+				when (viewModel.challengeStatus.value) {
+					CHALLENGE.START -> goToShareActivity()
+					CHALLENGE.STOP -> viewModel.setChallengeStatus(CHALLENGE.START)
+					else -> {
+					}
+				}
+			}
+
+			layoutGoOut.setOnClickListener {
+				toast("외출권")
 			}
 		}
 	}
@@ -100,60 +102,41 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 	}
 
 	private fun setStopView() {
-		stopButtonAnimation()
-		setStopActionBarView()
-		binding.tvCanNotStartChallenge.isVisible = viewModel.challengeStatus.value == CHALLENGE.STOP
-	}
+		setBackgroundColor(BACKGROUND.STOP.colorResId)
 
-	private fun stopButtonAnimation() {
-		moveHorizontally(binding.btnStartShareChallenge, 0F)
-		moveHorizontally(binding.btnPauseChallenge, 0F)
-//		GlobalScope.launch {
-//			delay(animationDuration)
-//			binding.btnStartShareChallenge.setBackgroundResource(R.drawable.main_button_background_disable)
-//		}
-	}
-
-	private fun setStopActionBarView() {
 		actionBar.setIsVisible(R.id.btn_right)
-		actionBar.setText(R.id.tv_title, "외출중입니다")
 
-		actionBar.setLayoutBackgroundColor(R.color.grayscale_gray_500)
-		window.statusBarColor = ContextCompat.getColor(this, R.color.grayscale_gray_500)
-		binding.root.setBackgroundColor(resources.getColor(R.color.grayscale_gray_500, null))
+		binding.btnCanNotStartChallenge.isVisible = !viewModel.isUserHome()
+		binding.layoutStartShareChallenge.isVisible = viewModel.isUserHome()
+		binding.layoutGoOut.visibility = View.GONE
+
+		if (viewModel.isUserHome()) {
+			binding.tvStartShare.text = this@MainActivity.resources.getString(R.string.main_start)
+			binding.imgStartShare.setImageResource(R.drawable.ic_icon_start_white)
+		}
 	}
 
 	private fun setStartView() {
-		startButtonAnimation()
-		startActionBarView()
-		binding.tvCanNotStartChallenge.isVisible = viewModel.challengeStatus.value == CHALLENGE.STOP
-	}
+		setBackgroundColor(viewModel.userLevel.colorResId)
 
-	private fun startButtonAnimation() {
-		binding.btnStartShareChallenge.setBackgroundResource(R.drawable.main_button_background_black)
-		moveHorizontally(binding.btnStartShareChallenge, 80F)
-		moveHorizontally(binding.btnPauseChallenge, -80F)
-	}
-
-	private fun startActionBarView() {
+		actionBar.setImage(R.id.btn_right, R.drawable.ic_icon_exit)
 		actionBar.clickListener(R.id.btn_right) {
 			ExitChallengeDialog().show(supportFragmentManager, "")
 		}
 
-		actionBar.setLayoutBackgroundColor(R.color.primary_purple)
-		window.statusBarColor = ContextCompat.getColor(this, R.color.primary_purple)
-		binding.root.setBackgroundColor(resources.getColor(R.color.primary_purple, null))
+		with(binding) {
+			btnCanNotStartChallenge.visibility = View.INVISIBLE
+			layoutStartShareChallenge.visibility = View.VISIBLE
+			layoutGoOut.visibility = View.VISIBLE
+
+			tvStartShare.text = this@MainActivity.resources.getString(R.string.main_share)
+			imgStartShare.setImageResource(R.drawable.ic_icon_share_white)
+		}
 	}
 
-	private fun moveHorizontally(view: View, distance: Float) {
-		val moveDistance = TypedValue.applyDimension(
-			TypedValue.COMPLEX_UNIT_DIP,
-			distance,
-			binding.root.resources.displayMetrics
-		)
-
-		val animation = ObjectAnimator.ofFloat(view, animationTranslationX, moveDistance)
-		animation.duration = animationDuration
-		animation.start()
+	private fun setBackgroundColor(colorResId: Int) {
+		actionBar.setLayoutBackgroundColor(colorResId)
+		window.statusBarColor = this.resources.getColor(colorResId, null)
+		viewModel.setBackgroundColor(colorResId)
 	}
 }

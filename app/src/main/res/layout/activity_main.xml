@@ -8,36 +8,69 @@
         <variable
                 name="vm"
                 type="com.nexters.sticky.ui.main.MainViewModel" />
+
+        <import type="androidx.core.content.ContextCompat" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/primary_purple">
+            android:background="@{context.resources.getColor(vm.backgroundColor)}">
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_begin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_end="24dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
                 android:id="@+id/tv_day"
+                style="@style/Text.Display3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:text="@{vm.day}"
                 android:textAlignment="center"
-                android:textColor="@color/primary_white"
-                android:textSize="28sp"
+                android:textColor="@color/primary_black"
                 app:layout_constraintBottom_toTopOf="@id/tv_divisor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/recycler_view"
                 app:layout_constraintVertical_chainStyle="packed"
-                tools:text="0일" />
+                tools:text="0 day" />
 
         <TextView
                 android:id="@+id/tv_hour"
+                style="@style/Text.Display1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{vm.hour}"
-                android:textColor="@color/primary_white"
-                android:textSize="80sp"
+                android:textColor="@color/primary_black"
                 app:layout_constraintBottom_toTopOf="@id/tv_second"
                 app:layout_constraintEnd_toStartOf="@id/tv_divisor"
                 app:layout_constraintHorizontal_chainStyle="packed"
@@ -47,13 +80,13 @@
 
         <TextView
                 android:id="@+id/tv_divisor"
+                style="@style/Text.Display3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:text=":"
-                android:textColor="@color/primary_white"
-                android:textSize="40sp"
+                android:textColor="@color/primary_black"
                 app:layout_constraintBottom_toTopOf="@id/tv_second"
                 app:layout_constraintEnd_toStartOf="@id/tv_minute"
                 app:layout_constraintStart_toEndOf="@id/tv_hour"
@@ -61,11 +94,11 @@
 
         <TextView
                 android:id="@+id/tv_minute"
+                style="@style/Text.Display1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{vm.minute}"
-                android:textColor="@color/primary_white"
-                android:textSize="80sp"
+                android:textColor="@color/primary_black"
                 app:layout_constraintBottom_toTopOf="@id/tv_second"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/tv_divisor"
@@ -74,64 +107,91 @@
 
         <TextView
                 android:id="@+id/tv_second"
+                style="@style/Text.Display3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="@{vm.second}"
                 android:textAlignment="center"
-                android:textColor="@color/primary_white"
-                android:textSize="30sp"
-                app:layout_constraintBottom_toTopOf="@id/btn_start_share_challenge"
+                android:textColor="@color/primary_black"
+                app:layout_constraintBottom_toTopOf="@id/layout_start_share_challenge"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_divisor"
                 tools:text="00" />
 
-        <ImageView
-                android:id="@+id/btn_pause_challenge"
-                android:layout_width="wrap_content"
+        <LinearLayout
+                android:id="@+id/layout_start_share_challenge"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="40dp"
-                android:background="@drawable/main_button_background_white"
-                android:src="@drawable/ic_launcher_foreground"
-                app:layout_constraintBottom_toTopOf="@id/recycler_view"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/box_radius_medium"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="18dp"
+                app:layout_constraintBottom_toTopOf="@id/layout_go_out"
+                app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                app:layout_constraintStart_toStartOf="@id/guideline_begin"
+                app:layout_goneMarginBottom="0dp">
+
+            <ImageView
+                    android:id="@+id/img_start_share"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_icon_share_white" />
+
+            <TextView
+                    android:id="@+id/tv_start_share"
+                    style="@style/Text.Headline2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/main_share"
+                    android:textColor="@color/primary_white" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/layout_go_out"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/box_radius_medium_main_transparent"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="18dp"
+                app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
+                app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                app:layout_constraintStart_toStartOf="@id/guideline_begin">
+
+            <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_icon_heart_filled" />
+
+            <TextView
+                    style="@style/Text.Headline2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/main_go_out"
+                    android:textColor="@color/primary_black" />
+        </LinearLayout>
 
         <TextView
-                android:id="@+id/tv_can_not_start_challenge"
-                android:layout_width="wrap_content"
+                android:id="@+id/btn_can_not_start_challenge"
+                style="@style/Text.Headline2"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="18dp"
-                android:background="@drawable/main_text_background"
-                android:padding="12dp"
-                android:text="현재 집에 있지 않아서 시작할 수 없어요!"
+                android:background="@drawable/box_radius_medium_main_disable"
+                android:padding="18dp"
+                android:text="@string/main_can_not_start_challenge"
+                android:textAlignment="center"
                 android:textColor="@color/primary_white"
-                android:textSize="16sp"
                 android:visibility="invisible"
-                app:layout_constraintBottom_toTopOf="@id/btn_start_share_challenge"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:text="현재 집에 있지 않아서 시작할 수 없어요!"
-                tools:visibility="visible" />
-
-        <ImageView
-                android:id="@+id/btn_start_share_challenge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="40dp"
-                android:background="@drawable/main_button_background_disable"
-                android:src="@drawable/ic_launcher_foreground"
-                app:layout_constraintBottom_toTopOf="@id/recycler_view"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-        <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
+                app:layout_constraintEnd_toEndOf="@id/guideline_end"
+                app:layout_constraintStart_toStartOf="@id/guideline_begin" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

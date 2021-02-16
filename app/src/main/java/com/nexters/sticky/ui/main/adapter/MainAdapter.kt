@@ -13,8 +13,8 @@ class MainAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 	}
 
 	private val sample = listOf(
-		BadgeToGet(R.drawable.ic_launcher_foreground, 3, 100, 80),
-		BadgeToGet(R.drawable.ic_launcher_foreground, 6, 12, 50)
+		BadgeToGet(R.mipmap.monthly_badge_monthly_10_locked, 3, 100),
+		BadgeToGet(R.mipmap.monthly_badge_monthly_30_locked, 6, 12)
 	)
 
 	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -22,7 +22,7 @@ class MainAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 		val showAllBinding = ItemMainBadgeShowAllBinding.inflate(LayoutInflater.from(parent.context))
 		return when (viewType) {
 			TYPE.BADGE.ordinal -> MainViewHolder(mainBinding)
-			else -> MainShowAllViewHolder(showAllBinding)
+			else -> MainShowAllViewHolder(showAllBinding, parent.context)
 		}
 	}
 

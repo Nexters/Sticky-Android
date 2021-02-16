@@ -7,9 +7,8 @@ class MainViewHolder(val binding: ItemMainBadgeBinding) : RecyclerView.ViewHolde
 	fun bind(item: BadgeToGet) {
 		binding.apply {
 			imgBadge.setImageResource(item.imageRes)
-			tvRemainingTime.text = "${item.remainingTime} 시간 뒤에 받아요"
-			tvAim.text = "${item.aim} 시간"
-			progressBar.progress = item.progressPercentage
+			tvBadge.text = "${item.badgeName} hours"
+			tvRemainingTime.text = "${item.remainingTime} 남음"
 		}
 	}
 }

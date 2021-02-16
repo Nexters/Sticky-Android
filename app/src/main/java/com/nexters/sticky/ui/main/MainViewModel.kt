@@ -4,6 +4,7 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.nexters.sticky.R
 import com.nexters.sticky.data.repository.SampleRepository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -15,21 +16,38 @@ class MainViewModel @ViewModelInject constructor(private val sampleRepository: S
 		START, PAUSE, STOP
 	}
 
-	val challengeStatus = MutableLiveData(CHALLENGE.STOP)
+	enum class BACKGROUND(val colorResId: Int) {
+		STOP(R.color.main_disable_background),
+		ONE(R.color.main_level_one_background),
+		TWO(R.color.main_level_two_background),
+		THREE(R.color.main_level_three_background),
+		FOUR(R.color.main_level_four_background)
+	}
 
-	val day = MutableLiveData("0일")
+	val challengeStatus = MutableLiveData(CHALLENGE.STOP)
+	val backgroundColor = MutableLiveData(BACKGROUND.THREE.colorResId)
+	val userLevel = BACKGROUND.ONE // TODO : SharedPreference 에서 정보 가져오기
+
+	fun isUserHome() = true
+	fun isChallengeStarted() = challengeStatus.value == CHALLENGE.START
+
+	val day = MutableLiveData("0 day")
 	val hour = MutableLiveData("00")
 	val minute = MutableLiveData("00")
 	val second = MutableLiveData("00")
 
 	private val format = "%02d"
-	private val formatDay = "%d일"
+	private val formatDay = "%d day"
 	private val base60 = 60
 	private val base24 = 24
 	private val durationTimeMillis = 1000L
 
 	fun setChallengeStatus(status: CHALLENGE) {
 		challengeStatus.value = status
+	}
+
+	fun setBackgroundColor(colorResId: Int) {
+		backgroundColor.value = colorResId
 	}
 
 	private var job = Job()
@@ -61,7 +79,7 @@ class MainViewModel @ViewModelInject constructor(private val sampleRepository: S
 	}
 
 	private fun resetTimerText() {
-		day.value = "0일"
+		day.value = "0 day"
 		hour.value = "00"
 		minute.value = "00"
 		second.value = "00"

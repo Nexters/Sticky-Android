@@ -5,6 +5,7 @@
         <item name="android:textSize">16sp</item>
         <item name="android:textColorPrimary">#40ffffff</item>
         <item name="android:textColorSecondary">#ffffff</item>
+        <item name="android:includeFontPadding">false</item>
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -13,6 +14,7 @@
         <item name="android:textSize">24sp</item>
         <item name="android:letterSpacing">-0.01</item>
         <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:includeFontPadding">false</item>
         <item name="fontFamily">@font/notosans_cjk_kr_bold</item>
     </style>
 
@@ -21,6 +23,7 @@
         <item name="android:textSize">17sp</item>
         <item name="android:letterSpacing">-0.02</item>
         <item name="android:lineSpacingExtra">7sp</item>
+        <item name="android:includeFontPadding">false</item>
         <item name="fontFamily">@font/notosans_cjk_kr_bold</item>
     </style>
 
@@ -29,6 +32,7 @@
         <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">-0.02</item>
         <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:includeFontPadding">false</item>
         <item name="fontFamily">@font/notosans_cjk_kr_bold</item>
     </style>
 
@@ -37,6 +41,7 @@
         <item name="android:textSize">17sp</item>
         <item name="android:letterSpacing">-0.01</item>
         <item name="android:lineSpacingExtra">7sp</item>
+        <item name="android:includeFontPadding">false</item>
         <item name="fontFamily">@font/notosans_cjk_kr_regular</item>
     </style>
 
@@ -45,6 +50,7 @@
         <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">-0.02</item>
         <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:includeFontPadding">false</item>
         <item name="fontFamily">@font/notosans_cjk_kr_regular</item>
     </style>
 
@@ -52,20 +58,30 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">96sp</item>
         <item name="android:letterSpacing">0</item>
+        <item name="android:includeFontPadding">false</item>
         <item name="fontFamily">@font/modak</item>
     </style>
 
     <style name="Text.Display2" parent="android:TextAppearance">
         <item name="android:textStyle">normal</item>
-        <item name="android:letterSpacing">0</item>
         <item name="android:textSize">80sp</item>
-        <item name="font">@font/modak</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="fontFamily">@font/modak</item>
     </style>
 
     <style name="Text.Display3" parent="android:TextAppearance">
         <item name="android:textStyle">normal</item>
         <item name="android:letterSpacing">0</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="fontFamily">@font/modak</item>
+    </style>
+
+    <style name="Text.Display4" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0</item>
         <item name="android:textSize">28sp</item>
-        <item name="font">@font/modak</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="fontFamily">@font/modak</item>
     </style>
 </resources>
