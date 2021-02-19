@@ -14,103 +14,136 @@
             android:layout_height="match_parent"
             android:background="@color/level1_back">
 
-        <com.google.android.material.tabs.TabLayout
-                android:id="@+id/share_tabLayout"
-                android:layout_width="0dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="@+id/viewpager_layout"
-                app:layout_constraintStart_toStartOf="@id/viewpager_layout"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tabGravity="center"
-                app:tabIndicatorColor="@color/level1_back"
-                app:tabSelectedTextColor="@color/primary_black"
-                app:tabTextAppearance="@style/tab_text"
-                app:tabTextColor="@color/dim_30" />
-
-        <androidx.cardview.widget.CardView
-                android:id="@+id/viewpager_layout"
-                android:layout_width="match_parent"
-                android:layout_height="368dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:clipChildren="false"
-                android:clipToPadding="false"
-                app:layout_constraintBottom_toTopOf="@+id/share_text_Linear"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/share_tabLayout">
-
-            <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/share_viewPager"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/level1_back" />
-
-        </androidx.cardview.widget.CardView>
-
-        <LinearLayout
-                android:id="@+id/share_text_Linear"
+        <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:gravity="center"
+                android:orientation="vertical"
                 app:layout_constraintBottom_toTopOf="@+id/share_btn_layout"
-                app:layout_constraintTop_toBottomOf="@+id/viewpager_layout">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/share_txt1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/share_descript_txt1"
-                    android:textColor="@color/primary_black"
-                    android:textSize="16sp" />
+            <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/share_tabLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="24dp"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toTopOf="@id/viewpager_layout"
+                    app:layout_constraintEnd_toEndOf="@+id/viewpager_layout"
+                    app:layout_constraintStart_toStartOf="@id/viewpager_layout"
+                    app:tabGravity="center"
+                    app:tabIndicatorColor="@color/level1_back"
+                    app:tabSelectedTextColor="@color/primary_black"
+                    app:tabTextAppearance="@style/tab_text"
+                    app:tabTextColor="@color/dim_30" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/share_content_txt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
-                    android:text="@{vm.text}"
-                    android:textColor="@color/primary_black"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+            <androidx.cardview.widget.CardView
+                    android:id="@+id/viewpager_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="368dp"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    app:cardElevation="0dp"
+                    app:layout_constraintBottom_toTopOf="@+id/share_text_Linear"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/share_txt2"
-                    android:layout_width="wrap_content"
+                <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/share_viewPager"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/level1_back" />
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                    android:id="@+id/share_text_Linear"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/share_descript_txt2"
-                    android:textColor="@color/primary_black"
-                    android:textSize="14sp" />
-        </LinearLayout>
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@+id/viewpager_layout">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/share_txt1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/share_descript_txt1"
+                        android:textColor="@color/primary_black"
+                        android:textSize="16sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/share_content_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:text="@{vm.text}"
+                        android:textColor="@color/primary_black"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/share_txt2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/share_descript_txt2"
+                        android:textColor="@color/primary_black"
+                        android:textSize="14sp" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
                 android:id="@+id/share_btn_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="36dp"
+                android:layout_marginBottom="28dp"
                 android:gravity="center"
+                android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/share_text_Linear">
+                app:layout_constraintStart_toStartOf="parent">
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/share_btn"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:background="@drawable/share_button_background_radius16"
-                    android:src="@drawable/ic_icon_share" />
 
-            <androidx.appcompat.widget.AppCompatImageButton
+            <LinearLayout
                     android:id="@+id/instagram_share_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="48dp"
                     android:layout_marginEnd="48dp"
+                    android:layout_marginBottom="16dp"
                     android:background="@drawable/share_button_background_radius16"
-                    android:src="@drawable/image_instagram" />
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_icon_instagram" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/share_instagram_btn_txt"
+                        android:textColor="@color/primary_white"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/share_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="48dp"
+                    android:layout_marginEnd="48dp"
+                    android:gravity="center"
+                    android:text="@string/share_btn_txt"
+                    android:textColor="@color/primary_black"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

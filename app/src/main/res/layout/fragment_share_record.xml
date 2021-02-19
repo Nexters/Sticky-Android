@@ -22,11 +22,9 @@
                 android:layout_height="368dp"
                 android:layout_marginLeft="@dimen/pageMarginAndOffset"
                 android:layout_marginRight="@dimen/pageMarginAndOffset"
-                android:background="@drawable/sharebackground_level01"
                 android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 

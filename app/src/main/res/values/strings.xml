@@ -54,5 +54,8 @@
     <!-- share page -->
     <string name="share_descript_txt1">나의</string>
     <string name="share_descript_txt2">을 공유합니다 </string>
+    <string name="share_btn_txt"><u>다른 방법으로 공유하기</u></string>
+    <string name="share_instagram_btn_txt">Instagram 공유하기</string>
+
 
 </resources>
