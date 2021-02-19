@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="pageMargin">20dp</dimen>
+    <dimen name="pageMargin">16dp</dimen>
     <dimen name="offset">24dp</dimen>
-    <dimen name="pageMarginAndOffset">40dp</dimen>
+    <dimen name="pageMarginAndOffset">48dp</dimen>
     <dimen name="frameSize">320dp</dimen>
     <dimen name="toolbar_height">48dp</dimen>
 </resources>

@@ -1,7 +1,6 @@
 package com.nexters.sticky.ui.share
 
 import android.content.Intent
-import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -13,8 +12,8 @@ import com.nexters.sticky.R
 import com.nexters.sticky.base.BaseActivity
 import com.nexters.sticky.databinding.ActivityShareBinding
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 import java.io.File
-import java.io.FileOutputStream
 
 
 @AndroidEntryPoint
@@ -33,19 +32,13 @@ class ShareActivity : BaseActivity<ActivityShareBinding>() {
 		super.onCreate(savedInstanceState)
 
 		binding.shareViewPager.adapter = ShareFragmentAdapter(this)
-
-//		val pageMarginPx = resources.getDimensionPixelOffset(R.dimen.toolbar_height)
-//		val pagerWidth = resources.getDimensionPixelOffset(R.dimen.pagewidth)
-//		val screenWidth = resources.displayMetrics.widthPixels
-//		val offsetPx = screenWidth - pageMarginPx - pagerWidth
-
 		binding.shareViewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 		binding.shareViewPager.offscreenPageLimit = 2
 
 		val pageMargin = resources.getDimensionPixelOffset(R.dimen.pageMargin).toFloat()
 		val pageOffset = resources.getDimensionPixelOffset(R.dimen.offset).toFloat()
 
-		binding.shareViewPager.setPageTransformer{ page, position ->
+		binding.shareViewPager.setPageTransformer { page, position ->
 			val myOffset = position * -(2 * pageOffset + pageMargin)
 			if (binding.shareViewPager.orientation == ViewPager2.ORIENTATION_HORIZONTAL) {
 				if (ViewCompat.getLayoutDirection(binding.shareViewPager) == ViewCompat.LAYOUT_DIRECTION_RTL) {
@@ -63,7 +56,6 @@ class ShareActivity : BaseActivity<ActivityShareBinding>() {
 		setMediator()
 		setOnClickListener()
 	}
-
 
 
 	private fun setActionBar() {
@@ -95,10 +87,7 @@ class ShareActivity : BaseActivity<ActivityShareBinding>() {
 	}
 
 	private fun setShareImage() {
-		//val bmp = BitmapFactory.decodeFile("${cacheDir.absolutePath}/capture.jpg")
-		//val uri: Uri? = getImageUri(this, bmp)
-		getCaptureScreen()
-		val file = File(cacheDir, "capture.jpg")
+		val file = File(cacheDir, "capturebadge.jpg")
 		val uri: Uri? = FileProvider.getUriForFile(this, packageName, file)
 		val intent = Intent(android.content.Intent.ACTION_SEND)
 		intent.type = "image/*"
@@ -119,13 +108,9 @@ class ShareActivity : BaseActivity<ActivityShareBinding>() {
 			)
 			startActivity(intent)          // 앱이 설치되어 있지 않은 경우 Play스토어로 이동
 		} else {
-//			val backgroundAssetUri: Uri =
-//				Uri.parse(cacheDir.toString() + "/capture.jpg")
-//			val bmp = BitmapFactory.decodeFile("$cacheDir/capture.jpg")
-//			val uri: Uri? = getImageUri(this, bmp)
-			getCaptureScreen()
-			val file = File(cacheDir, "capture.jpg")
+			val file = File(cacheDir, "capturerecord.jpg")
 			val uri: Uri? = FileProvider.getUriForFile(this, packageName, file)
+			Timber.d(cacheDir.toString())
 			val intent = Intent(android.content.Intent.ACTION_SEND)
 			intent.type = "image/*"
 			intent.putExtra(Intent.EXTRA_STREAM, uri)
@@ -133,34 +118,4 @@ class ShareActivity : BaseActivity<ActivityShareBinding>() {
 			startActivity(intent)
 		}
 	}
-
-	private fun getCaptureScreen() {
-		val storage: String = cacheDir.toString()
-		val container = binding.captureLayout
-		container.buildDrawingCache()
-		val captureView = container.drawingCache
-		val filename = "capture.jpg"
-		val tempFile = File(storage, filename)
-
-		try {
-			tempFile.createNewFile()
-			val fos = FileOutputStream(tempFile)
-			captureView.compress(Bitmap.CompressFormat.JPEG, 100, fos)
-		} catch (e: Exception) {
-			e.printStackTrace()
-		}
-	}
-	//
-//	@Suppress("DEPRECATION")
-//	private fun getImageUri(context: Context, inImage: Bitmap?): Uri? {
-//		val bytes = ByteArrayOutputStream()
-//		inImage!!.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
-//		val path: String = MediaStore.Images.Media.insertImage(
-//			context.contentResolver,
-//			inImage,
-//			"Title",
-//			null
-//		)
-//		return Uri.parse(path)
-//	}
 }

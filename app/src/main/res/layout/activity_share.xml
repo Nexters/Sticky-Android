@@ -19,8 +19,8 @@
                 android:layout_width="0dp"
                 android:layout_height="24dp"
                 android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="@+id/capture_layout"
-                app:layout_constraintStart_toStartOf="@id/capture_layout"
+                app:layout_constraintEnd_toEndOf="@+id/viewpager_layout"
+                app:layout_constraintStart_toStartOf="@id/viewpager_layout"
                 app:layout_constraintTop_toTopOf="parent"
                 app:tabGravity="center"
                 app:tabIndicatorColor="@color/level1_back"
@@ -29,25 +29,24 @@
                 app:tabTextColor="@color/dim_30" />
 
         <androidx.cardview.widget.CardView
-                android:id="@+id/capture_layout"
+                android:id="@+id/viewpager_layout"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="368dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
-                android:clipToPadding="false"
                 android:clipChildren="false"
+                android:clipToPadding="false"
                 app:layout_constraintBottom_toTopOf="@+id/share_text_Linear"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/share_tabLayout"
-                android:background="@color/transparent">
+                app:layout_constraintTop_toBottomOf="@id/share_tabLayout">
 
             <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/share_viewPager"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/level1_back"
-                     />
+                    android:background="@color/level1_back" />
+
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
@@ -57,7 +56,7 @@
                 android:layout_marginBottom="16dp"
                 android:gravity="center"
                 app:layout_constraintBottom_toTopOf="@+id/share_btn_layout"
-                app:layout_constraintTop_toBottomOf="@+id/capture_layout">
+                app:layout_constraintTop_toBottomOf="@+id/viewpager_layout">
 
             <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/share_txt1"
@@ -92,7 +91,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="36dp"
                 android:gravity="center"
-                android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -107,18 +105,12 @@
 
             <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/instagram_share_btn"
-                    android:layout_width="48dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:layout_marginStart="48dp"
                     android:layout_marginEnd="48dp"
-                    android:src="@drawable/image_instagram" />
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/twitter_share_btn"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
                     android:background="@drawable/share_button_background_radius16"
-                    android:src="@drawable/ic_icon_share" />
+                    android:src="@drawable/image_instagram" />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
