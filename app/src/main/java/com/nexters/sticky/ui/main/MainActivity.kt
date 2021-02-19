@@ -43,6 +43,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 		initView()
 		setOnClickListener()
 		observeViewModel()
+
+		viewModel.insertReward()
 	}
 
 	private fun initView() {
@@ -95,6 +97,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 					viewModel.stopTimer()
 				}
 				else -> toast("pause")
+			}
+		})
+
+		viewModel.result.observe(this@MainActivity, Observer {
+			if (it.isNotEmpty()) {
+//				toast(it[0].level.toString())
 			}
 		})
 	}
