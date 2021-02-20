@@ -9,6 +9,10 @@ class RewardRepository @Inject constructor(private val rewardDao: RewardDao) {
 		rewardDao.insertReward(reward)
 	}
 
+	suspend fun insertRewards(rewards: List<Reward>) {
+		rewardDao.insertRewardList(rewards)
+	}
+
 	suspend fun updateRewardInfo(reward: Reward) {
 		rewardDao.updateReward(reward)
 	}

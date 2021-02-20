@@ -8,7 +8,8 @@ data class Reward(
 	@PrimaryKey(autoGenerate = true)
 	val id: Long = 0L,
 	val isBadge: Boolean = true,
-	val imageResId: Int = 0,
+	val receivedImageResId: Int = 0,
+	val lockImageResId: Int = 0,
 	val level: Int = -1,
 	val description: String = "",
 	val receivedConditionType: Int = RECEIVE.SPECIAL.ordinal,
@@ -16,6 +17,6 @@ data class Reward(
 	val receivedDate: Long = 0L
 ) {
 	enum class RECEIVE {
-		CONTINUOUS, ACCUMULATIVE, SPECIAL
+		SPECIAL, MONTHLY, CONTINUOUS, LEVEL
 	}
 }

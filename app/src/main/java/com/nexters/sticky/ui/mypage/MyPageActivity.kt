@@ -9,7 +9,9 @@ import com.nexters.sticky.base.BaseActivity
 import com.nexters.sticky.databinding.ActivityMyPageBinding
 import com.nexters.sticky.ui.mypage.ViewMore.LEVEL
 import com.nexters.sticky.ui.mypage.adapter.MyPageAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MyPageActivity : BaseActivity<ActivityMyPageBinding>() {
 
 	override val viewModel: MyPageViewModel by viewModels()
@@ -28,6 +30,8 @@ class MyPageActivity : BaseActivity<ActivityMyPageBinding>() {
 		setActionBar()
 		setRecyclerView()
 		setOnClickListener()
+
+//		viewModel.getLevelInfo()
 	}
 
 	private fun setActionBar() {

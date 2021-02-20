@@ -30,17 +30,7 @@ class MainViewModel @ViewModelInject constructor(private val rewardRepository: R
 	private val base24 = 24
 	private val durationTimeMillis = 1000L
 
-	val result: LiveData<List<Reward>> = rewardRepository.fetchUserLevelInfo(2)
-
-	fun insertReward() {
-		val sample = arrayOf(Reward(), Reward(level = 2), Reward(level = 3))
-
-		viewModelScope.launch {
-			rewardRepository.insertReward(sample[0])
-			rewardRepository.insertReward(sample[1])
-			rewardRepository.insertReward(sample[2])
-		}
-	}
+//	val result: LiveData<List<Reward>> = rewardRepository.fetchUserLevelInfo(2)
 
 	fun setChallengeStatus(status: CHALLENGE) {
 		challengeStatus.value = status
