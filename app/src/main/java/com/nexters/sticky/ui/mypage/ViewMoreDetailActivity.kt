@@ -38,10 +38,13 @@ class ViewMoreDetailActivity : AppCompatActivity() {
 		actionBar.apply {
 			initActionBar(
 				this@ViewMoreDetailActivity,
-				R.layout.actionbar_view_more_layout
+				R.layout.actionbar_main_layout
 			)
 			setLayoutBackgroundColor(R.color.primary_white)
+
 			setText(R.id.tv_title, getString(intent.getIntExtra(titleResId, R.string.view_more_about_sticky)))
+
+			setImage(R.id.btn_left, R.drawable.ic_icon_back)
 			clickListener(R.id.btn_left) {
 				finish()
 			}

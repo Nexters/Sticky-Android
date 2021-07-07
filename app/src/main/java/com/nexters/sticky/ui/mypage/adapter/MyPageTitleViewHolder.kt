@@ -23,9 +23,11 @@ class MyPageTitleViewHolder(val binding: ItemMyPageTitleBinding, val context: Co
 	}
 
 	private fun setMonthlyFilter() {
-		binding.btnFilter.apply {
-			visibility = View.VISIBLE
-			setOnClickListener {
+		binding.apply {
+			tvFilter.visibility = View.VISIBLE
+
+			btnFilter.visibility = View.VISIBLE
+			btnFilter.setOnClickListener {
 				onClick?.onClickSetFilter()
 			}
 		}

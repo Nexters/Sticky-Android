@@ -36,6 +36,7 @@
     <!-- my page -->
     <string name="my_page_level_info"><u>등급정보</u></string>
     <string name="my_page_next_level_remaining">다음 레벨까지 %1$d 남았습니다</string>
+    <string name="my_page_filter_this_month">이번달</string>
 
     <string name="my_page_title">마이페이지</string>
     <string name="my_page_special_title">스페셜 기록</string>

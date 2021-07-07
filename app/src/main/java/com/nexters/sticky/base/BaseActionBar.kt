@@ -51,6 +51,12 @@ class BaseActionBar {
 		}
 	}
 
+	fun setImage(res: Int, imageResId: Int) {
+		view.findViewById<ImageView>(res)?.let {
+			it.setImageResource(imageResId)
+		}
+	}
+
 	fun setIsVisible(res: Int) {
 		view.findViewById<ImageView>(res)?.let {
 			it.isVisible = it.visibility != View.VISIBLE

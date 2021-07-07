@@ -2,11 +2,9 @@ package com.nexters.sticky.di
 
 import android.content.Context
 import androidx.room.Room
-import androidx.room.RoomDatabase
-import com.nexters.sticky.StickyApplication
 import com.nexters.sticky.data.StickyDatabase
-import com.nexters.sticky.data.dao.SampleDao
-import com.nexters.sticky.data.repository.SampleRepository
+import com.nexters.sticky.data.dao.RewardDao
+import com.nexters.sticky.data.repository.RewardRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,17 +18,14 @@ object DatabaseModule {
 	@Provides
 	@Singleton
 	fun provideRoomDataBase(@ApplicationContext context: Context): StickyDatabase {
-		return Room.databaseBuilder(context, StickyDatabase::class.java, "sample_db")
-			.build()
+		return Room.databaseBuilder(context, StickyDatabase::class.java, "reward_db").build()
 	}
 
 	@Provides
-	@Singleton
-	fun providesSampleDao(roomDatabase: StickyDatabase): SampleDao {
-		return roomDatabase.sampleDao()
+	fun providesRewardDao(roomDatabase: StickyDatabase): RewardDao {
+		return roomDatabase.rewardDao()
 	}
 
 	@Provides
-	@Singleton
-	fun providesSampleRepository(sampleDao: SampleDao) = SampleRepository(sampleDao)
+	fun providesRewardRepository(rewardDao: RewardDao) = RewardRepository(rewardDao)
 }

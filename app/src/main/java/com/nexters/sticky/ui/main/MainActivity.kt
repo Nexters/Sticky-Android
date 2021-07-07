@@ -97,6 +97,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 				else -> toast("pause")
 			}
 		})
+
+//		viewModel.result.observe(this@MainActivity, Observer {
+//			if (it.isNotEmpty()) {
+////				toast(it[0].level.toString())
+//			}
+//		})
 	}
 
 	private fun setStopView() {

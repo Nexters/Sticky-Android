@@ -15,7 +15,7 @@ class ViewMoreActivity : BaseActivity<ActivityViewMoreBinding>() {
 	override val viewModel: MyPageViewModel by viewModels()
 
 	override val layoutRes = R.layout.activity_view_more
-	override val actionBarLayoutRes = R.layout.actionbar_view_more_layout
+	override val actionBarLayoutRes = R.layout.actionbar_main_layout
 	override val statusBarColorRes = R.color.primary_white
 
 	override fun setUpBinding() {
@@ -33,6 +33,8 @@ class ViewMoreActivity : BaseActivity<ActivityViewMoreBinding>() {
 
 	private fun setActionBar() {
 		actionBar.setText(R.id.tv_title, getString(R.string.view_more_title))
+
+		actionBar.setImage(R.id.btn_left, R.drawable.ic_icon_back)
 		actionBar.clickListener(R.id.btn_left) {
 			finish()
 		}

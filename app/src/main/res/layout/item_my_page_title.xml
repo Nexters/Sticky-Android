@@ -10,13 +10,14 @@
             android:id="@+id/line"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/primary_black"
+            android:background="@color/grayscale_gray_200"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
             android:id="@+id/tv_title"
+            style="@style/Text.Headline2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/line"
@@ -27,6 +28,7 @@
 
     <TextView
             android:id="@+id/tv_title_description"
+            style="@style/Text.Body2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_title"
@@ -35,12 +37,26 @@
             app:layout_constraintTop_toBottomOf="@id/tv_title"
             tools:text="특별한 기록을 달성하면 받을 수 있어요" />
 
+    <TextView
+            android:id="@+id/tv_filter"
+            style="@style/Text.Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:text="@string/my_page_filter_this_month"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/btn_filter"
+            app:layout_constraintEnd_toStartOf="@id/btn_filter"
+            app:layout_constraintTop_toTopOf="@id/btn_filter"
+            tools:visibility="visible" />
+
     <ImageView
             android:id="@+id/btn_filter"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:src="@drawable/ic_launcher_background"
+            android:src="@drawable/ic_icon_filter"
             android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/tv_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_title"
             tools:visibility="visible" />

@@ -6,7 +6,7 @@ import com.nexters.sticky.R
 
 enum class ViewMore(private val titleResId: Int, private val imageResId: Int) {
 	ABOUT(R.string.view_more_about_sticky, R.drawable.ic_launcher_foreground),
-	LEVEL(R.string.my_page_level_info, R.drawable.ic_launcher_background),
+	LEVEL(R.string.my_page_level_info, R.mipmap.level_info_kr),
 	LICENSE(R.string.view_more_open_source_licence, R.drawable.ic_image_logo);
 
 	fun goToDetailActivity(context: Context) {
